@@ -12,6 +12,7 @@ app.use(bodyParser.json())
 
 var MongoClient = require('mongodb').MongoClient;
 
+
 const dbConfig = require('./config/database.config');
 
 // --------------------------------------------------------------------------------------------
@@ -52,8 +53,8 @@ app.get('/showall', function(req,res){
   MongoClient.connect(dbConfig.url, function(err, db) {
     	useNewUrlParser: true
     if (err) throw err;
-    var dbo = db.db("avengers");
-    dbo.collection("weapons").find({}).toArray(function(err, result) {
+    var dbo = db.db("sample_mflix");
+    dbo.collection("movies").find({}).toArray(function(err, result) {
       if (err) throw err;
       res.send(result);
       db.close();
@@ -67,9 +68,9 @@ app.post('/delete', function(req,res){
 
   MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("avengers");
+  var dbo = db.db("sample_mflix");
   var myquery = { title: req.body.title };
-  dbo.collection("weapons").deleteOne(myquery, function(err, obj) {
+  dbo.collection("movies").deleteOne(myquery, function(err, obj) {
     if (err) throw err;
     res.send("1 document deleted");
     db.close();
@@ -82,9 +83,9 @@ app.get('/titles', function(req,res){
   MongoClient.connect(dbConfig.url, function(err, db) {
     	useNewUrlParser: true
     if (err) throw err;
-    var dbo = db.db("avengers");
+    var dbo = db.db("sample_mflix");
     var mysort = { title: -1 };
-    dbo.collection("weapons").find({},{ projection: { _id: 0, title: 1} }).sort(mysort).toArray(function(err, result) {
+    dbo.collection("movies").find({},{ projection: { _id: 0, title: 1} }).sort(mysort).toArray(function(err, result) {
       if (err) throw err;
       res.send(result);
       db.close();
@@ -97,10 +98,10 @@ app.post('/updatecontent', function(req,res){
 
   MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("avengers");
+  var dbo = db.db("sample_mflix");
   var myquery = { title: req.body.title };
   var newvalues = { $set: {tile: req.body.title,content: req.body.content} };
-  dbo.collection("weapons").updateOne(myquery, newvalues, function(err, result) {
+  dbo.collection("movies").updateOne(myquery, newvalues, function(err, result) {
     if (err) throw err;
     res.send("1 document updated with title: "+req.body.title);
     db.close();
@@ -112,10 +113,10 @@ app.post('/updatetitle', function(req,res){
 
   MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("avengers");
+  var dbo = db.db("sample_mflix");
   var myquery = { title: req.body.title };
   var newvalues = { $set: {title: req.body.newtitle} };
-  dbo.collection("weapons").updateOne(myquery, newvalues, function(err, result) {
+  dbo.collection("movies").updateOne(myquery, newvalues, function(err, result) {
     if (err) throw err;
     res.send("1 document updated with title: "+req.body.title);
     db.close();

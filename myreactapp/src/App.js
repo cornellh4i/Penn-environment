@@ -142,12 +142,12 @@ class App extends Component {
                 {
                   id: "name",
                   Header: "Name",
-                  accessor: "avenger"
+                  accessor: "name"
                 },
                 {
                   id: "weapon",
                   Header: "Weapon",
-                  accessor: "weapon"
+                  accessor: "town"
                 },
                 {
                   id: "action",
