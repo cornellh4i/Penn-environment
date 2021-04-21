@@ -21,10 +21,10 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url,{ useNewUrlParser: true });
 var nameSchema = new mongoose.Schema({
-    avenger: String,
-    weapon: String,
+    name: String,
+    town: String,
 });
-var weapons = mongoose.model("weapons", nameSchema);
+var weapons = mongoose.model("town", nameSchema);
 
 
 // --------------------------------------------------------------------------------------------

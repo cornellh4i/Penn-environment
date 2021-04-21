@@ -13,12 +13,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 
 class App extends Component {
-  currentRow: any = {};
-  deleteRow: boolean = false;
-  editRow: boolean = false;
+  currentRow = {};
+  deleteRow = false;
+  editRow = false;
   constructor() {
     super();
-    this.state = { data: [], open: false, name: "", weapon: "" };
+    this.state = { data: [], open: false, name: "", town: "" };
     fetch("http://localhost:3001/showall")
       .then(data => data.json())
       .then(data => {
@@ -28,11 +28,14 @@ class App extends Component {
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeWeapon = this.handleChangeWeapon.bind(this);
   }
+
+
+
   handleChangeName(event) {
     this.setState({ name: event.target.value });
   }
   handleChangeWeapon(event) {
-    this.setState({ weapon: event.target.value });
+    this.setState({ movie: event.target.value });
   }
 
   handleClickOpen = () => {
@@ -42,6 +45,9 @@ class App extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+
+  
 
   onClickHandler() {
     console.log(this.refs["simpleForm"].getFormValues());
@@ -79,8 +85,8 @@ class App extends Component {
             this.deleteRow = false;
           }
           if (this.editRow === true) {
-            this.setState({ name: this.currentRow.avenger });
-            this.setState({ weapon: this.currentRow.weapon });
+            this.setState({ name: this.currentRow.name });
+            this.setState({ town: this.currentRow.town });
             this.handleClickOpen();
             console.log("Enter into getRowInfo edit row");
             this.editRow = false;
@@ -92,8 +98,8 @@ class App extends Component {
   updateEntry = () => {
     console.log("Row updated");
     console.log(this.currentRow);
-    this.currentRow.avenger = this.state.name;
-    this.currentRow.weapon = this.state.weapon;
+    this.currentRow.name = this.state.name;
+    this.currentRow.town = this.state.town;
     let obj = JSON.stringify(this.currentRow);
     fetch("http://localhost:3001/update", {
       method: "post",
@@ -121,8 +127,8 @@ class App extends Component {
         <br />
         <br />
         <Form ref="simpleForm">
-          <Field name="avenger" label="Enter your name" type="text" />
-          <Field name="weapon" label="Your weapon" type="text" />
+          <Field name="name" label="Enter your name" type="text" />
+          <Field name="town" label="Your weapon" type="text" />
         </Form>
         <button className="submitBtn" onClick={this.onClickHandler.bind(this)}>
           Submit
@@ -184,7 +190,7 @@ class App extends Component {
             <form>
               {" "}
               <TextField
-                id="standard-name"
+                id="name"
                 label="Name"
                 value={this.state.name}
                 onChange={this.handleChangeName}
@@ -192,10 +198,10 @@ class App extends Component {
               />
               <TextField
                 margin="dense"
-                id="weapon"
+                id="town"
                 label="Weapon"
                 type="text"
-                value={this.state.weapon}
+                value={this.state.town}
                 onChange={this.handleChangeWeapon}
                 fullWidth
               />
