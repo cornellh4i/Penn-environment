@@ -1,0 +1,182 @@
+@import url(//db.onlinewebfonts.com/c/23c0fcab84d99da0de762de7e220a6e1?family=Europa);
+
+.textFooter {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: Europa-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.textFooterSecondary {
+    position: absolute;
+    left: 0%;
+    right: 4.3%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: Europa-Regular;
+    font-size: 16px;
+    line-height: 20px;
+    color: #5D6264;
+}
+
+.textLabel {
+    position: relative;
+    text-align: left;
+
+    font: Europa-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+    display: block;
+
+    color: #373D3F;
+}
+
+.textHeading {
+    position: static;
+    width: 256px;
+    height: 60px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Europa;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    /* or 125% */
+
+    text-align: center;
+
+    /* Formally / Dark Gray */
+
+    color: #1C1F20;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0px;
+}
+
+.helperText {
+    position: relative;
+    left: 0%;
+    right: 10%;
+    top: 0%;
+    bottom: 0%;
+    align-items: left;
+
+    font-family: Europa-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #373D3F;
+}
+
+/* Homepage */
+.bills {
+  height: 50%;
+  float: bottom;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.bill {
+  width: 33.3%;
+  /*float: left;*/
+  margin: 10px;
+
+  /* Rectangle 46 */
+  width: 370px;
+  height: 201px;
+  /*left: 0px;*/
+  top: 30px;
+  background: #FFFFFF;
+  background-image: url('nature.jpg'), linear-gradient(red, yellow);
+  background-image:     linear-gradient(to bottom, rgba(253, 254, 253, 0.985025) 0.01%, rgba(125, 169, 143, 0.0416667) 99.99%),
+  url('nature.jpg');
+  /* background-image: url('nature.jpg'), linear-gradient(180deg, #FFFFFF 0%, rgba(253, 254, 253, 0.985025) 0.01%, rgba(125, 169, 143, 0.0416667) 99.99%, rgba(119, 166, 138, 0) 100%); */
+}
+
+.billsText {
+  /* Featured Bills */
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 10px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.senateBillText {
+  /* Senate Bill 189 P.N. 157 */
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.referred {
+  /* Referred to ENVIRONMENTAL RESOURCES AND ENERGY */
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #000000;
+}
+
+.introduced {
+  /* Introduced February 10, 2021 */
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.reset {
+  width: 37px;
+  height: 19px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  padding-left: 10px;
+  align-items: center;
+
+  color: #000000;
+}

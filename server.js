@@ -21,10 +21,18 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url,{ useNewUrlParser: true });
 var nameSchema = new mongoose.Schema({
-    name: String,
-    town: String,
+    bill_number: Number,
+    bill_name: String,
+    bill_intro_date: Date,
+    bill_summary: String,
+    bill_sponsor: String,
+    sponsor_link: String,
+    sponsor_title: String,
+    sponsor_district: String,
+    bill_cosponsor: String,
+    bill_status: String
 });
-var weapons = mongoose.model("town", nameSchema);
+var entry = mongoose.model("entry", nameSchema);
 
 
 // --------------------------------------------------------------------------------------------
@@ -37,7 +45,7 @@ app.use(function(req, res, next) {
 // --------------------------------------------------------------------------------------------
 app.post('/insert', function(req,res){
 	console.log(req.body)
-  var myData = new weapons(req.body);
+  var myData = new entry(req.body);
       myData.save()
           .then(item => {
               res.send("Name saved to database");
@@ -53,8 +61,8 @@ app.get('/showall', function(req,res){
   MongoClient.connect(dbConfig.url, function(err, db) {
     	useNewUrlParser: true
     if (err) throw err;
-    var dbo = db.db("sample_mflix");
-    dbo.collection("movies").find({}).toArray(function(err, result) {
+    var dbo = db.db("pennWebsiteInfo");
+    dbo.collection("pennWebsiteInfo").find({}).toArray(function(err, result) {
       if (err) throw err;
       res.send(result);
       db.close();
@@ -68,9 +76,9 @@ app.post('/delete', function(req,res){
 
   MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("sample_mflix");
-  var myquery = { title: req.body.title };
-  dbo.collection("movies").deleteOne(myquery, function(err, obj) {
+  var dbo = db.db("pennWebsiteInfo");
+  var myquery = { bill_number: req.body.bill_number };
+  dbo.collection("pennWebsiteInfo").deleteOne(myquery, function(err, obj) {
     if (err) throw err;
     res.send("1 document deleted");
     db.close();
@@ -83,9 +91,9 @@ app.get('/titles', function(req,res){
   MongoClient.connect(dbConfig.url, function(err, db) {
     	useNewUrlParser: true
     if (err) throw err;
-    var dbo = db.db("sample_mflix");
+    var dbo = db.db("pennWebsiteInfo");
     var mysort = { title: -1 };
-    dbo.collection("movies").find({},{ projection: { _id: 0, title: 1} }).sort(mysort).toArray(function(err, result) {
+    dbo.collection("pennWebsiteInfo").find({},{ projection: { _id: 0, bill_number: 1} }).sort(mysort).toArray(function(err, result) {
       if (err) throw err;
       res.send(result);
       db.close();
@@ -98,12 +106,12 @@ app.post('/updatecontent', function(req,res){
 
   MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("sample_mflix");
-  var myquery = { title: req.body.title };
-  var newvalues = { $set: {tile: req.body.title,content: req.body.content} };
+  var dbo = db.db("pennWebsiteInfo");
+  var myquery = { bill_number: req.body.bill_number };
+  var newvalues = { $set: {bill_number: req.body.bill_number,content: req.body.content} };
   dbo.collection("movies").updateOne(myquery, newvalues, function(err, result) {
     if (err) throw err;
-    res.send("1 document updated with title: "+req.body.title);
+    res.send("1 document updated with title: "+req.body.bill_number);
     db.close();
   });
 });
@@ -113,12 +121,12 @@ app.post('/updatetitle', function(req,res){
 
   MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("sample_mflix");
-  var myquery = { title: req.body.title };
-  var newvalues = { $set: {title: req.body.newtitle} };
-  dbo.collection("movies").updateOne(myquery, newvalues, function(err, result) {
+  var dbo = db.db("pennWebsiteInfo");
+  var myquery = { bill_number: req.body.bill_number };
+  var newvalues = { $set: {bill_number: req.body.bill_number} };
+  dbo.collection("pennWebsiteInfo").updateOne(myquery, newvalues, function(err, result) {
     if (err) throw err;
-    res.send("1 document updated with title: "+req.body.title);
+    res.send("1 document updated with title: "+req.body.bill_number);
     db.close();
   });
 });
