@@ -16,8 +16,13 @@ require('typeface-roboto');
     var dummy_sponsor = 'dummy sponsor'
     var dummy_full_text = 'https://www.legis.state.pa.us/CFDOCS/Legis/PN/Public/btCheck.cfm?txtType=PDF&sessYr=2021&sessInd=0&billBody=S&billTyp=B&billNbr=0408&pn=0401'
     
-    function BillPage(){
-      return(
+    class BillPage extends Component{
+      constructor(props) {
+        super(props);
+        console.log(this.props.location.state.data)
+      }
+      render()
+      {return(
       <View>
         <div className="App" style={{ width: "100%", left: "0%" }}>
           <Header />
@@ -27,8 +32,8 @@ require('typeface-roboto');
             marginLeft: "3%", width: "4%", height: "3%", padding: "0px", background: "transparent", color: "black", borderWidth: "0px"
           }} />
           </Link>
-          <h2 style={{ fontFamily: "Roboto", marginLeft: "3%", fontSize: "36px", marginBottom: "0%", marginTop: ".5%" }}>Senate Bill 408 P.N. 401</h2>
-          <h3 style={{ fontFamily: "Roboto", marginLeft: "3%", marginTop: ".1%", fontSize: "20px", fontWeight: "normal" }}>Introduced on March 12</h3>
+          <h2 style={{ fontFamily: "Roboto", marginLeft: "3%", fontSize: "36px", marginBottom: "0%", marginTop: ".5%" }}>Senate Bill {this.props.location.state.data.bill_number}</h2>
+          <h3 style={{ fontFamily: "Roboto", marginLeft: "3%", marginTop: ".1%", fontSize: "20px", fontWeight: "normal" }}>Introduced on {this.props.location.state.data.bill_intro_date}</h3>
           <input type="submit" className="submitButton" value="Download PDF" style={{
             fontFamily: "Roboto", fontWeight: "normal",
             marginLeft: "3%", width: "10%", height: "3%", padding: "6px", background: "black"
@@ -37,11 +42,7 @@ require('typeface-roboto');
             marginTop: "1.5%", marginLeft: "3%", width: "50%",
             height: "90%", borderWidth: "1px", borderColor: "black", borderStyle: "solid",
             borderRadius: "3px", fontFamily: "Roboto", fontWeight: "normal", fontSize: "20px", padding: "3px"
-          }}>Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Suspendisse diam id quis ullamcorper. Auctor
-            volutpat placerat ut cursus fermentum pretium. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Suspendisse diam id quis ullamcorper. Auctor volutpat
-      placerat ut cursus fermentum pretium.</h4>
+          }}>{this.props.location.state.data.bill_summary}</h4>
         </div>
         <View style={styles.articles}>
           <Text style={styles.subTitles}>Key Resources</Text>
@@ -92,33 +93,33 @@ require('typeface-roboto');
           </View>
           <View style={styles.overviewRows}>
             <Text style={styles.tabHeaders}>Sponsor: </Text>
-            <Text style={styles.tabInfoSponsor}>Sen. Katie Muth</Text>
+            <Text style={styles.tabInfoSponsor}>{this.props.location.state.data.bill_sponsor}</Text>
           </View>
           <View style={styles.row}>
-            <Text style={styles.subInfo}>Senate District 44, Democrat</Text>
+            <Text style={styles.subInfo}>Senate District 44, {this.props.location.state.data.sponsor_district}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Co-Sponsor: </Text>
-            <Text style={styles.tabInfo}>Sen. Jay Costa</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_cosponsor}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Date: </Text>
-            <Text style={styles.tabInfo}>March 12 2021</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_intro_date}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Status: </Text>
-            <Text style={styles.tabInfo}>Referred to ENVIORNMENTAL RESOURCES AND ENERGY</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_status}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Memo: <br></br></Text>
-            <Text style={styles.tabInfo}>Increase Fines for Major Facilities
-            Air Pollution <br></br>Episodes and Municipal Notification Requirement.</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_name}</Text>
           </View>
         </View>
       </View>
 
     );
   }
+}
 
 const styles = StyleSheet.create({
   container: {

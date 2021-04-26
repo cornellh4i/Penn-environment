@@ -22,7 +22,6 @@ class CarouselComponent extends React.Component {
     fetch("http://localhost:3001/showall")
       .then(data => data.json())
       .then(data => {
-        console.log(data);
         this.setState({ data: data });
       });
   }
@@ -33,7 +32,9 @@ class CarouselComponent extends React.Component {
         <Carousel breakPoints={breakPoints}>
         {this.state.data.map((stateInfo, index) => (
                      <Item>
-                     <Link to="/bill">
+                     <Link to={{pathname: "/bill",
+                          state: { data: stateInfo }
+                        }}>
                          <div className="bill">
                            <h2 className="senateBillText">Bill {stateInfo.bill_number}</h2>
                            <p className="referred"> Referred to as {stateInfo.bill_name}</p>
