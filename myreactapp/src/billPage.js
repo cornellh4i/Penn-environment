@@ -1,34 +1,3 @@
-/*
-import React, { Component } from "react";
-import { Admin, Resource } from "react-admin";
-import authProvider from "./authProvider";
-import AdminPage from "./AdminPage";
-
-import { UserList, UserEdit, UserCreate } from './users';
-import jsonServerProvider from "ra-data-json-server";
-*/
-// const dataProvider =
-//   jsonServerProvider("https://jsonplaceholder.typicode.com");
-
-/*
-class App extends Component {
-  render() {
-    return (
-      <Admin dataProvider={"index.hmtl"} authProvider={authProvider}>
-        <AdminPage>
-        {/* <Admin authProvider={authProvider}> } 
-        {/* <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} /> }
-        {/* <Resource name="index.html"></Resource> }
-      
-        <p>logged in!</p>
-        </AdminPage>
-      </Admin>
-    );
-  }
-}
-export default App;
-*/
-
 import React, { Component } from 'react';
 import { Button, Text, View, Linking, StyleSheet } from "react-native";
 import Header from "./Header";
@@ -73,11 +42,7 @@ class App extends Component {
             marginTop: "1.5%", marginLeft: "3%", width: "50%",
             height: "90%", borderWidth: "1px", borderColor: "black", borderStyle: "solid",
             borderRadius: "3px", fontFamily: "Roboto", fontWeight: "normal", fontSize: "20px", padding: "3px"
-          }}>Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Suspendisse diam id quis ullamcorper. Auctor
-            volutpat placerat ut cursus fermentum pretium. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Suspendisse diam id quis ullamcorper. Auctor volutpat
-      placerat ut cursus fermentum pretium.</h4>
+          }}>{this.props.location.state.data.bill_summary}</h4>
         </div>
 
         <View style={styles.articles}>
@@ -113,6 +78,7 @@ class App extends Component {
             {dummy_petition2}
           </Text>
         </View>
+        
         <View style={styles.billTabArea}>
           <View style={styles.buttonsRow}>
             <Button style={styles.overviewButton}
@@ -127,29 +93,28 @@ class App extends Component {
             />
 
           </View>
-          <View style={styles.overviewRows}>
+           <View style={styles.overviewRows}>
             <Text style={styles.tabHeaders}>Sponsor: </Text>
-            <Text style={styles.tabInfoSponsor}>Sen. Katie Muth</Text>
+            <Text style={styles.tabInfoSponsor}>{this.props.location.state.data.bill_sponsor}</Text>
           </View>
           <View style={styles.row}>
-            <Text style={styles.subInfo}>Senate District 44, Democrat</Text>
+            <Text style={styles.subInfo}>Senate District 44, {this.props.location.state.data.sponsor_district}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Co-Sponsor: </Text>
-            <Text style={styles.tabInfo}>Sen. Jay Costa</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_cosponsor}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Date: </Text>
-            <Text style={styles.tabInfo}>March 12 2021</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_intro_date}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Status: </Text>
-            <Text style={styles.tabInfo}>Referred to ENVIORNMENTAL RESOURCES AND ENERGY</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_status}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Memo: <br></br></Text>
-            <Text style={styles.tabInfo}>Increase Fines for Major Facilities
-            Air Pollution <br></br>Episodes and Municipal Notification Requirement.</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_name}</Text>
           </View>
         </View>
       </View>
