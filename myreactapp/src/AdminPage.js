@@ -5,6 +5,7 @@ import './App.css'
 import './text.css'
 import './textBlocks.css'
 import CarouselComponent from './carousalComponent.js';
+import AdminForm from './AdminForm.js';
 
 class AdminPage extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class AdminPage extends React.Component {
         <div style={{ width: "100%" }}>
           <div style={{ float: "left", width: "50%", height: "50%" }}>
             <h1 className="textHeading">State Form</h1>
-            <Bills states={this.state.states} addState={this.addState.bind(this)} editState={this.editState.bind(this)} index={this.state.editing_index} />
+            <AdminForm states={this.state.states} addState={this.addState.bind(this)} editState={this.editState.bind(this)} index={this.state.editing_index} />
           </div>
         </div>
         {/* <CarouselComponent></CarouselComponent> */}
