@@ -21,9 +21,9 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url,{ useNewUrlParser: true });
 var nameSchema = new mongoose.Schema({
-    bill_number: Number,
+    bill_number: String,
     bill_name: String,
-    bill_intro_date: Date,
+    bill_intro_date: String,
     bill_summary: String,
     bill_sponsor: String,
     sponsor_link: String,
@@ -43,16 +43,19 @@ app.use(function(req, res, next) {
   next();
 });
 // --------------------------------------------------------------------------------------------
+
 app.post('/insert', function(req,res){
-	console.log(req.body)
+  console.log(req.body)
   var myData = new entry(req.body);
-      myData.save()
-          .then(item => {
-              res.send("Name saved to database");
-          })
-          .catch(err => {
-              res.status(400).send("Unable to save to database");
-          });
+  MongoClient.connect(dbConfig.url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("pennWebsiteInfo");
+    dbo.collection("pennWebsiteInfo").insertOne(myData, function(err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+    });
+  });
 })
 
 // --------------------------------------------------------------------------------------------
