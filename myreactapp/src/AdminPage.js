@@ -33,16 +33,25 @@ class AdminPage extends React.Component {
     document.getElementById("Bill Name").value = bill_name;
     var bill_number = this.state.states[index].bill_number;
     document.getElementById("Bill Number").value = bill_number;
+    var bill_intro_date = this.state.states[index].bill_intro_date;
+    document.getElementById("Bill Intro Date").value = bill_intro_date;
     var bill_summary = this.state.states[index].bill_summary;
     document.getElementById("Bill Summary").value = bill_summary;
-    var bill_link = this.state.states[index].bill_link
-    document.getElementById("Bill Link").value = bill_link;
+    var bill_sponsor = this.state.states[index].bill_sponsor
+    document.getElementById("Bill Sponsor").value = bill_sponsor;
     this.setState({ editing_index: index });
-    var sponsor_name = this.state.states[index].sponsor_name;
-    document.getElementById("Sponsor Name").value = sponsor_name;
     var sponsor_link = this.state.states[index].sponsor_link;
     document.getElementById("Sponsor Link").value = sponsor_link;
-
+    var sponsor_title = this.state.states[index].sponsor_title;
+    document.getElementById("Sponsor Title").value = sponsor_title;
+    var sponsor_district = this.state.states[index].sponsor_district;
+    document.getElementById("Sponsor District").value = sponsor_district;
+    var bill_cosponsor = this.state.states[index].bill_cosponsor;
+    document.getElementById("Bill Cosponsor").value = bill_cosponsor;
+    var bill_status = this.state.states[index].bill_status;
+    document.getElementById("Bill Status").value = bill_status;
+    var links = this.state.states[index].links;
+    document.getElementById("Links").value = links;
     this.setState({ editing_index: index });
   }
 
