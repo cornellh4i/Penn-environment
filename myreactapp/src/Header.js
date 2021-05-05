@@ -48,12 +48,14 @@ class Header extends Component {
               color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
             }} />
         </div>
-        <div style={{ marginLeft: "1%", paddingTop: "5%", height: "10%" }}>
-          <input type="submit" className="submitButton" value="Admin" style={{
-            fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
-            width: "100%", height: "20%", background: "transparent",
-            color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
-          }} />
+
+        < div style={{ marginLeft: "1%", paddingTop: "5%", height: "10%" }}>
+          <Link to={{ pathname: "/AdminPage" }}>
+            <input type="submit" className="submitButton" value="Admin" style={{
+              fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
+              width: "100%", height: "20%", background: "transparent",
+              color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
+            }} />  </Link>
         </div>
       </div>
     )
