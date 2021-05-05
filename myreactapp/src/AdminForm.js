@@ -101,6 +101,27 @@ class AdminForm extends Component {
           placeholder='Sponsor Link'
           ref={el => this.sponsor_link = el}
         />
+
+
+        <p className="textLabel">Sponsor Link</p>
+        <input
+          type="text"
+          className="input"
+          id='sponsor_link'
+          placeholder='Sponsor Link'
+          ref={el => this.sponsor_link = el}
+        />
+
+        <p className="textLabel">Sponsor Link</p>
+        <input
+          type="text"
+          className="input"
+          id='sponsor_link'
+          placeholder='Sponsor Link'
+          ref={el => this.sponsor_link = el}
+        />
+
+
         <input type="submit" className="submitButton" value="Add State" />
         {/* <button className="submitButton"onClick={() => this.props.editState(this.props.index)}>Update Value </button> */}
 
