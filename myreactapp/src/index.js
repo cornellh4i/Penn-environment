@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./style.css";
-import BillPage from "./pages/billPage"
+import BillPage from "./billPage"
 import AdminPage from "./AdminPage"
 
 // import AdminPage from "./AdminPage";
