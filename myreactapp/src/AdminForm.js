@@ -13,13 +13,27 @@ class AdminForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     var newStateInfo = {
-      bill_name: this.bill_name.value,
       bill_number: this.bill_number.value,
+      bill_name: this.bill_name.value,
+      bill_intro_date: "",
       bill_summary: this.bill_summary.value,
-      bill_link: this.bill_link.value,
-      sponsor_name: this.sponsor_name.value,
-      sponsor_link: this.sponsor_link.value
+      bill_sponsor: this.sponsor_name.value,
+      sponsor_link: "",
+      sponsor_title: "",
+      sponsor_district: "",
+      bill_cosponsor: "",
+      bill_status: ""
     };
+
+    fetch("http://localhost:3001/insert", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newStateInfo)
+    });
+
     this.props.addState(newStateInfo);
 
     // Clear form after submit
