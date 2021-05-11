@@ -111,6 +111,7 @@
   background-image: url('nature.jpg'), linear-gradient(red, yellow);
   background-image:     linear-gradient(to bottom, rgba(253, 254, 253, 0.985025) 0.01%, rgba(125, 169, 143, 0.0416667) 99.99%),
   url('nature.jpg');
+  border-radius: 10px;
   /* background-image: url('nature.jpg'), linear-gradient(180deg, #FFFFFF 0%, rgba(253, 254, 253, 0.985025) 0.01%, rgba(125, 169, 143, 0.0416667) 99.99%, rgba(119, 166, 138, 0) 100%); */
 }
 
