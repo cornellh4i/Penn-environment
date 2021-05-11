@@ -3,6 +3,7 @@ import { Admin, Resource } from "react-admin";
 import authProvider from "./authProvider";
 import AdminPage from "./AdminPage";
 import Header from "./Header";
+import Footer from "./Footer";
 import Bill from "./Bills";
 import { Button, Text, View, Linking, StyleSheet } from "react-native";
 
@@ -17,6 +18,7 @@ class App extends Component {
       <View>
         <Header />
         <Bill />
+        <Footer />
       </View>
     );
   }

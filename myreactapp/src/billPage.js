@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Text, View, Linking, StyleSheet } from "react-native";
 import Header from "./Header";
+import Footer from "./Footer.js";
 import './button.css'
 require('typeface-open-sans');
 require('typeface-roboto');
@@ -78,7 +79,7 @@ class App extends Component {
             {dummy_petition2}
           </Text>
         </View>
-        
+
         <View style={styles.billTabArea}>
           <View style={styles.buttonsRow}>
             <Button style={styles.overviewButton}
