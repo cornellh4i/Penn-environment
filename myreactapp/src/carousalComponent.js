@@ -56,6 +56,7 @@ class CarouselComponent extends React.Component {
               }}>
               <div className="billCard">
                 <div className="bill">
+                  <h1 className="summary">Summary</h1>
                   <h2 className="senateBillText">Bill {stateInfo.bill_number}</h2>
                   <p className="referred"> Referred to as {stateInfo.bill_name}</p>
                   <p className="introduced">Introduced on {stateInfo.bill_intro_date}</p>

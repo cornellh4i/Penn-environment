@@ -107,8 +107,22 @@
   border-radius: 10px;
 }
 
-.billCard:hover {
+.bill:hover {
   background-image: url('hovernature.png');
+}
+
+.summary {
+  opacity: 0;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 10px;
+  color: #000000;
+}
+
+.summary:hover {
+  opacity: 1;
 }
 
 .bill {
@@ -128,7 +142,7 @@
   border-bottom-right-radius: 10px;
 }
 
-.billsText {
+.billsText1 {
   /* Featured Bills */
   font-family: Open Sans;
   font-style: normal;
@@ -137,13 +151,22 @@
   line-height: 10px;
   margin-left: 5%;
   /* identical to box height */
+}
 
-  color: #000000;
+.billsText2 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 10px;
+  margin-left: 5%;
+  background-image: url("TreeShadows.png");
 }
 
 .senateBillText {
   /* Senate Bill 189 P.N. 157 */
-
+  width: 270px;
+  float: left;
   font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
@@ -156,7 +179,9 @@
 
 .referred {
   /* Referred to ENVIRONMENTAL RESOURCES AND ENERGY */
-
+  width: 270px;
+  height: 27px;
+  float: left;
   font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
@@ -168,7 +193,8 @@
 
 .introduced {
   /* Introduced February 10, 2021 */
-
+  width: 270px;
+  float: left;
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
