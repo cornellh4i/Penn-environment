@@ -75,12 +75,13 @@ class Bill extends Component {
         </div>
 
         <h1 className="billsText">Featured Bills</h1>
-        
+
         <CarouselComponent></CarouselComponent>
 
         <h1 className="billsText">Active Bills</h1>
-        
+
         <CarouselComponent></CarouselComponent>
+
       </div>
 
     )

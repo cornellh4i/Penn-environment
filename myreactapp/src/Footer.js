@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Linking } from "react-native";
 import { Link } from "react-router-dom";
 import "./footer.css"
-import "./fblogo.jpg"
-import "./twitterlogo.jpg"
-
+import Logo from "./fblogo.jpg";
+import Logo2 from "./twitterlogo.jpg";
 require('typeface-merriweather');
 require('typeface-open-sans');
 
@@ -23,8 +22,8 @@ class Footer extends Component {
         <h1 className = "scoreCardButton">Penn Environment Score Card</h1>
         <h1 className = "aboutButton">Penn Environment</h1>
         <div className = "appLogos">
-          <img src= "fblogo.jpg"/>
-          <img src= "twitterlogo.jpg"/>
+          <img src= {Logo} style= {{marginRight: "5%"}}/>
+          <img src= {Logo2}/>
         </div>
       </div>
         <div style={{ marginLeft: "45%", height: "10%", paddingTop: "5%" }}>
