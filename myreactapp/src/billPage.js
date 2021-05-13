@@ -37,8 +37,8 @@ class App extends Component {
             marginLeft: "3%", width: "4%", height: "3%", padding: "0px", background: "transparent", color: "black", borderWidth: "0px"
           }} />
           </Link>
-          <h2 style={{ fontFamily: "Roboto", marginLeft: "3%", fontSize: "36px", marginBottom: "0%", marginTop: ".5%" }}>Senate Bill 408 P.N. 401</h2>
-          <h3 style={{ fontFamily: "Roboto", marginLeft: "3%", marginTop: ".1%", fontSize: "20px", fontWeight: "normal" }}>Introduced on March 12</h3>
+          <h2 style={{ fontFamily: "Roboto", marginLeft: "3%", fontSize: "36px", marginBottom: "0%", marginTop: ".5%" }}>Senate Bill {this.props.location.state.data.bill_number} P.N. 401</h2>
+          <h3 style={{ fontFamily: "Roboto", marginLeft: "3%", marginTop: ".1%", fontSize: "20px", fontWeight: "normal" }}>Introduced on {this.props.location.state.data.bill_intro_date}</h3>
           <input type="submit" className="submitButton" value="Download PDF" style={{
             fontFamily: "Roboto", fontWeight: "normal", cursor: "pointer",
             marginLeft: "3%", width: "10%", height: "3%", padding: "6px", background: "black"
