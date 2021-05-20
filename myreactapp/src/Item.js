@@ -6,9 +6,9 @@ export default styled.div`
   align-items: center;
   height: 250px;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: none;
   color: #fff;
-  margin: 0 15px;
+  margin: 30 30px;
   font-size: 4em;
 `;
 // background-color: #00008B;

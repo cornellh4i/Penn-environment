@@ -1,7 +1,5 @@
 import React from 'react';
-import './App.css'
-import './text.css'
-import './textBlocks.css'
+import './style.css'
 import AdminForm from './AdminForm.js';
 import Header from "./Header";
 import { Link } from "react-router-dom";

@@ -88,53 +88,8 @@ app.post('/delete', function(req,res){
   });
 });
 })
-//--------------------------------------------------------------------------------------------
-app.get('/titles', function(req,res){
 
-  MongoClient.connect(dbConfig.url, function(err, db) {
-    	useNewUrlParser: true
-    if (err) throw err;
-    var dbo = db.db("pennWebsiteInfo");
-    var mysort = { title: -1 };
-    dbo.collection("pennWebsiteInfo").find({},{ projection: { _id: 0, bill_number: 1} }).sort(mysort).toArray(function(err, result) {
-      if (err) throw err;
-      res.send(result);
-      db.close();
-    });
-  });
 
-})
-//--------------------------------------------------------------------------------------------
-app.post('/updatecontent', function(req,res){
-
-  MongoClient.connect(dbConfig.url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("pennWebsiteInfo");
-  var myquery = { bill_number: req.body.bill_number };
-  var newvalues = { $set: {bill_number: req.body.bill_number,content: req.body.content} };
-  dbo.collection("movies").updateOne(myquery, newvalues, function(err, result) {
-    if (err) throw err;
-    res.send("1 document updated with title: "+req.body.bill_number);
-    db.close();
-  });
-});
-})
-//--------------------------------------------------------------------------------------------
-app.post('/updatetitle', function(req,res){
-
-  MongoClient.connect(dbConfig.url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("pennWebsiteInfo");
-  var myquery = { bill_number: req.body.bill_number };
-  var newvalues = { $set: {bill_number: req.body.bill_number} };
-  dbo.collection("pennWebsiteInfo").updateOne(myquery, newvalues, function(err, result) {
-    if (err) throw err;
-    res.send("1 document updated with title: "+req.body.bill_number);
-    db.close();
-  });
-});
-
-})
 //--------------------------------------------------------------------------------------------
 // define a simple route
 app.get('/', (req, res) => {

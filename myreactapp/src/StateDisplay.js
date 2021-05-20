@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './button.css'
+import './style.css'
 
 
 class StateDisplay extends Component {

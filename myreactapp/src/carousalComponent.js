@@ -14,8 +14,9 @@ const breakPoints = [
 
 class CarouselComponent extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log(this.props.featured)
     this.state = { data: [] };
     fetch("http://localhost:3001/showall")
       .then(data => data.json())
@@ -24,33 +25,78 @@ class CarouselComponent extends React.Component {
       });
   }
 
+
+
   render() {
     return (
       <div className="App">
         <Carousel breakPoints={breakPoints} style={{marginBottom: "3%"}}>
-          {this.state.data.map((stateInfo, index) => (
-            <Item>
-              <Link to={{
-                pathname: "/bill",
-                state: { data: stateInfo }
-              }}>
-                <div className="billCard">
-                  <div className="bill">
-                    <h2 className="senateBillText">Bill {stateInfo.bill_number}</h2>
-                    <p className="referred"> Referred to as {stateInfo.bill_name}</p>
-                    <p className="introduced">Introduced on {stateInfo.bill_intro_date}</p>
+          {this.state.data.map((stateInfo, index) => {
+            console.log(stateInfo.featured)
+            if(this.props.featured && stateInfo.featured)
+              {return <Item key = {index}>
+                <Link to={{
+                  pathname: "/bill",
+                  state: { data: stateInfo },
+                }}>
+                  <div id = "billCard" className="billCard">
+
+                    <div className="bill" id = "wrapper">
+                      <div id = "billInfo">
+                      <h2 className="senateBillText">Senate Bill {stateInfo.bill_number}</h2>
+                      <h2 className="senatorName">Senator {stateInfo.bill_sponsor}</h2>
+                      <h2 className="introduced">Introduced on {stateInfo.bill_intro_date}</h2>
+                      <p className="referred"> Referred to as {stateInfo.bill_name}</p>
+                      </div>
+
+                      <div id = "wrapper">   
+                        <p className="text"><div class= "center"><u>Bill Summary</u> <br/><br/>{stateInfo.bill_summary}</div></p>
+                      </div>
+                    
                   </div>
-                  <div className="billImg">
+                    <div className="billImg">
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </Item>
-          ))}
+
+
+                </Link>
+              </Item>}
+               else if(!this.props.featured)         
+               {return <Item key = {index}>
+               <Link to={{
+                 pathname: "/bill",
+                 state: { data: stateInfo },
+               }}>
+                 <div id = "billCard" className="billCard">
+
+                   <div className="bill" id = "wrapper">
+                     <div id = "billInfo">
+                     <h2 className="senateBillText">Senate Bill {stateInfo.bill_number}</h2>
+                     <h2 className="senatorName">Senator {stateInfo.bill_sponsor}</h2>
+                     <h2 className="introduced">Introduced on {stateInfo.bill_intro_date}</h2>
+                     <p className="referred"> Referred to as {stateInfo.bill_name}</p>
+                     </div>
+
+                     <div id = "wrapper">                      
+                      <p className="text"><div class= "center"><u>Bill Summary</u> <br/><br/>{stateInfo.bill_summary}</div></p>
+                     </div>
+                   
+                 </div>
+                   <div className="billImg">
+                   </div>
+                 </div>
+
+
+               </Link>
+             </Item>}
+        })}
 
         </Carousel>
       </div>
     );
   }
 }
+
+
 
 export default CarouselComponent;

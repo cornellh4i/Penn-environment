@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Linking } from "react-native";
 import { Link } from "react-router-dom";
-import "./footer.css"
 import Logo from "./fblogo.jpg";
 import Logo2 from "./twitterlogo.jpg";
 require('typeface-merriweather');
@@ -19,30 +18,14 @@ class Footer extends Component {
         <h1 className = "text">View Archived Bills</h1>
         <h1 className = "text">About Us</h1>
         <h1 className = "text">Follow Us</h1>
-        <h1 className = "scoreCardButton">Penn Environment Score Card</h1>
-        <h1 className = "aboutButton">Penn Environment</h1>
+        <input type="submit" className="scoreCardButton" value="Penn Environment Score Card" onClick={() => Linking.openURL("https://scorecard.conservationpa.org/")}/>
+        <input type="submit" className="scoreCardButton" value="Penn Environment" onClick={() => Linking.openURL("https://pennenvironment.org/")}/>
+
         <div className = "appLogos">
           <img src= {Logo} style= {{marginRight: "5%"}}/>
           <img src= {Logo2}/>
         </div>
       </div>
-        <div style={{ marginLeft: "45%", height: "10%", paddingTop: "5%" }}>
-          <input type="submit" className="submitButton" value="Find My Legislator" onClick={() => Linking.openURL("https://www.legis.state.pa.us/cfdocs/legis/home/findyourlegislator/")}
-            style={{
-              fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
-              width: "100%", height: "20%", background: "transparent",
-              color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
-            }} />
-        </div>
-
-        < div style={{ marginLeft: "1%", paddingTop: "5%", height: "10%" }}>
-          <Link to={{ pathname: "/AdminPage" }}>
-            <input type="submit" className="submitButton" value="Admin" style={{
-              fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
-              width: "100%", height: "20%", background: "transparent",
-              color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
-            }} />  </Link>
-        </div>
       </div>
     )
   }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import './style.css'
+
 import StateDisplay from './StateDisplay.js'
 
 class StatesContainer extends Component {

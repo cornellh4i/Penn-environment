@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import './button.css'
-import './input.css'
-import './text.css'
+import './style.css'
 import { View, StyleSheet } from "react-native";
 import StatesContainer from './StatesContainer.js'
 require('typeface-open-sans');
@@ -129,7 +127,7 @@ class AdminForm extends Component {
 
 
         <div className="AdminForm" style={{ width: "100%", paddingBottom: "1%" }}>
-          <h2 style={{ fontFamily: "Roboto", marginLeft: "10%", fontSize: "24px", marginBottom: "0%", marginTop: "2%" }}>Bill Properties</h2>
+          <h2 style={{ fontFamily: "Roboto", marginLeft: "10%", fontSize: "24px", marginBottom: "0%", marginTop: "2%" }}>Add a Bill</h2>
           <form onSubmit={this.handleSubmit} style={{ marginLeft: "10%" }}>
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Name </p>
             <input

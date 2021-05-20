@@ -2,3 +2,453 @@
   font-family: sans-serif;
   text-align: center;
 }
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.background{
+  background-image: url('background.png');
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@import url(//db.onlinewebfonts.com/c/23c0fcab84d99da0de762de7e220a6e1?family=Europa);
+
+.textFooter {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: Europa-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.textFooterSecondary {
+    position: absolute;
+    left: 0%;
+    right: 4.3%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: Europa-Regular;
+    font-size: 16px;
+    line-height: 20px;
+    color: #5D6264;
+}
+
+.textLabel {
+    position: relative;
+    text-align: left;
+
+    font: Europa-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+    display: block;
+
+    color: #373D3F;
+}
+
+.textHeading {
+    position: static;
+    width: 256px;
+    height: 60px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Europa;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    /* or 125% */
+
+    text-align: center;
+
+    /* Formally / Dark Gray */
+
+    color: #1C1F20;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0px;
+}
+
+.helperText {
+    position: relative;
+    left: 0%;
+    right: 10%;
+    top: 0%;
+    bottom: 0%;
+    align-items: left;
+
+    font-family: Europa-Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #373D3F;
+}
+
+/* Homepage */
+.bills {
+  height: 50%;
+  float: bottom;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 0px;
+}
+
+.billCard {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0px;
+  width: 360px;
+  height: 201px;
+  top: 30px;
+  box-shadow: 2px -2px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  position: relative;
+}
+
+.bill:hover {
+  background-image: url('hovernature.png');
+}
+
+  #wrapper .text {
+    left:0px;
+    /* float: left; */
+    visibility:hidden;
+    white-space: pre-wrap;
+    left: 0%;
+    display: block;
+    width: 360px;
+    height: 201px;
+    /* margin-top: 50px; */
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    z-index: 9;
+    position: relative;
+
+
+  }
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  
+  #wrapper:hover .text {
+    visibility:visible;
+    background-image: url('hovernature.png');
+    border-top-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+.bill {
+  width: 270px;
+  background: #FFFFFF;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.billImg {
+  width: 90px;
+  background-image: url('nature.png'), linear-gradient(red, yellow);
+  background-position: right;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 1;
+}
+
+.billsText1 {
+  /* Featured Bills */
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 10px;
+  margin-left: 5%;
+  /* identical to box height */
+}
+
+.billsText2 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 10px;
+  margin-left: 5%;
+}
+
+.senateBillText {
+  /* Senate Bill 189 P.N. 157 */
+  margin-left: 30px;
+  margin-bottom: 0px;
+  margin-right: 40px;
+  float: left;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.senatorName{
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 40px;
+  float: left;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  /* identical to box height */
+  color: #000000;
+}
+
+.referred {
+  /* Referred to ENVIRONMENTAL RESOURCES AND ENERGY */
+  margin-left: 30px;
+  float: left;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.introduced {
+  margin-left: 30px;
+  margin-top: 0px;
+  float: left;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  z-index: -auto;
+
+  color: #868585;
+}
+
+.reset {
+  width: 37px;
+  height: 19px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  padding-left: 10px;
+  align-items: center;
+
+  color: #000000;
+}
+.submitButton { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 24px;
+  margin-left: 100px;
+  
+  position: relative;
+
+  
+  color:white; 
+  background: #334581;
+  border-radius: 8px;
+  
+  font: Europa-Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 16px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  grid-column-gap: 15%;
+  grid-row-gap: 0px;
+  margin-top: 20px;
+  margin-left: 50%;
+}
+
+.text {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 27px;
+  white-space: nowrap;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  color: #000000;
+}
+
+.scoreCardButton {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+
+  cursor: "pointer";
+
+  background: #334581;
+  border-radius: 5px;
+
+  position: static;
+  left: 10px;
+  height: 45px;
+  /* top: 10px; */
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px;
+}
+
+
+.appLogos {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.webTextBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  position: relative;
+  width: 500px;
+  height: 100%;
+  float: right;
+}
+.header{
+ /* Header / Main */
+
+
+position: relative;
+width: 1440px;
+height: 100px;
+
+/* Formally / White */
+
+background: #FFFFFF;
+/* Basic Drop Shadow */
+
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.footer{
+  /* Footer / Main */
+
+
+position: relative;
+display: flex;
+left: 0%;
+right: 100%;
+top: 100%;
+bottom: 0%;
+width: 1440px;
+height: 188px;
+
+/* Formally/Dark Teal */
+
+background: #018484;
+/* Basic Drop Shadow */
+
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+

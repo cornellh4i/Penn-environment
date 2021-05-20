@@ -1,15 +1,14 @@
 import React from 'react'
-import './button.css'
-import './input.css'
-import './text.css'
 import CarouselComponent from './carousalComponent'
+import './style.css'
+
 
 
 
   function Bills() {
     return (
-      <div>
-        <div className="inputs">
+      <div className = "background">
+        {/* <div className="inputs">
           <input
             type="text"
             className="inputKeyWords"
@@ -30,15 +29,15 @@ import CarouselComponent from './carousalComponent'
             Search
           </button>
           <p className="reset">Reset</p>
-        </div>
+        </div> */}
 
         <h1 className="billsText1">Featured Bills</h1>
 
-        <CarouselComponent></CarouselComponent>
+        <CarouselComponent featured = {true}></CarouselComponent>
 
         <h1 className="billsText2">Active Bills</h1>
 
-        <CarouselComponent></CarouselComponent>
+        <CarouselComponent featured = {false}></CarouselComponent>
 
       </div>
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Text, View, Linking, StyleSheet } from "react-native";
 import {Link } from "react-router-dom";
+import './style.css'
+
 
 import Header from "./Header";
-import './button.css'
 require('typeface-open-sans');
 require('typeface-roboto');
 
@@ -78,7 +79,7 @@ class App extends Component {
             {dummy_petition1}
           </Text>
           <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_url)}>
+            onPress={() => Linking.openURL(dummy_full_text)}>
             {dummy_petition2}
           </Text>
         </View>

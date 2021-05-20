@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Linking } from "react-native";
 import Logo from "./logo.png";
+import './style.css'
 import { Link } from "react-router-dom";
 
 require('typeface-merriweather');
