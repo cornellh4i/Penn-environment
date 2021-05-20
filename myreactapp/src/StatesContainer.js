@@ -11,7 +11,8 @@ class StatesContainer extends Component {
       <div>
         {this.props.states.map((stateInfo, index) => (
           <StateDisplay
-            stateName={stateInfo.key}
+            stateName={stateInfo.bill_name}
+            key={index}
             index={index}
             deleteState={this.props.deleteState}
             editState={this.props.editState}

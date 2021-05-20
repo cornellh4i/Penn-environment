@@ -3,7 +3,6 @@ import { Button, Text, View, Linking, StyleSheet } from "react-native";
 import {Link } from "react-router-dom";
 
 import Header from "./Header";
-import Footer from "./Footer.js";
 import './button.css'
 require('typeface-open-sans');
 require('typeface-roboto');

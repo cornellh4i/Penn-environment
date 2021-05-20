@@ -42,11 +42,11 @@ class Header extends Component {
             color: "black", display: "inline", position: "relative", marginLeft: "5%"
           }}>Tracker</h1>
         </div>
-        <div style={{ marginLeft: "45%", height: "10%", paddingTop: "5%" }}>
+        <div style={{ marginLeft: "40%", height: "10%", paddingTop: "5%" }}>
           <input type="submit" className="submitButton" value="Find My Legislator" onClick={() => Linking.openURL("https://www.legis.state.pa.us/cfdocs/legis/home/findyourlegislator/")}
             style={{
               fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
-              fontSize: "24px", width: "100%", height: "20%", background: "transparent",
+              fontSize: "24px", width: "100%", background: "transparent",
               color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
             }} />
         </div>

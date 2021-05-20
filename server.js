@@ -76,11 +76,11 @@ app.get('/showall', function(req,res){
 
 //--------------------------------------------------------------------------------------------
 app.post('/delete', function(req,res){
-
   MongoClient.connect(dbConfig.url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("pennWebsiteInfo");
-  var myquery = { bill_number: req.body.bill_number };
+  var myquery = { bill_name: req.body.bill_name  };
+
   dbo.collection("pennWebsiteInfo").deleteOne(myquery, function(err, obj) {
     if (err) throw err;
     res.send("1 document deleted");

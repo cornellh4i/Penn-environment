@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import './button.css'
 import './input.css'
 import './text.css'
-import { Button, Text, View, Linking, StyleSheet } from "react-native";
-import Header from "./Header";
+import { View, StyleSheet } from "react-native";
 import StatesContainer from './StatesContainer.js'
 require('typeface-open-sans');
 
@@ -11,7 +10,7 @@ class AdminForm extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { data: [] };
+    this.state = { data: [] , editing_index: -1};
     fetch("http://localhost:3001/showall")
       .then(data => data.json())
       .then(data => {
@@ -55,16 +54,23 @@ class AdminForm extends Component {
     this.sponsor_link.value = "";
   }
 
-  addState(newStateInfo) {
-    var states = this.state.states;
-    states.push(newStateInfo);
-    this.setState({ states: states });
-  }
 
-  deleteState(index) {
+
+  async deleteState(index) {
     var states = this.state.data;
+    console.log(states[index])
+    
+    fetch("http://localhost:3001/delete", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(states[index])
+    });
     states.splice(index, 1);
     this.setState({ states: states })
+
   }
 
   editState(index) {
@@ -102,6 +108,8 @@ class AdminForm extends Component {
             </div>
           </div>
         </View>
+
+
         <div className="AdminForm" style={{ width: "100%", paddingBottom: "1%" }}>
           <h2 style={{ fontFamily: "Roboto", marginLeft: "10%", fontSize: "24px", marginBottom: "0%", marginTop: "2%" }}>Bill Properties</h2>
           <form onSubmit={this.handleSubmit} style={{ marginLeft: "10%" }}>
@@ -123,10 +131,10 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Summary</p>
-            <textarea placeholder="Insert summary here" style={{
+            <input ref={el => this.bill_summary = el} id='bill_summary' placeholder="Insert summary here" style={{
               paddingLeft: "5px", paddingTop: "5px", width: "74%", fontFamily: "Arial", fontSize: "16px", height: "110px",
               fontWeight: "normal", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.08)", borderRadius: "4px", border: "1px solid #CCCCCC"
-            }}></textarea>
+            }}></input>
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>PA Legislator Link</p>
             <input
               type="text"
@@ -155,15 +163,10 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <div className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
-              <Button
-                title="Update"
-                color="#334581"
-                width="15%"
-              // onPress={() => Linking.openURL(dummy_full_text)}
-              />
+            <input type="submit" className="submitButton" value="Update"/>
+      
             </div>
-            {/* <input type="submit" className="submitButton" value="Add State" /> */}
-            {/* <button className="submitButton"onClick={() => this.props.editState(this.props.index)}>Update Value </button> */}
+
           </form >
         </div >
       </div>

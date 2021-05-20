@@ -26,11 +26,6 @@ class AdminPage extends React.Component {
     this.setState({ states: states });
   }
 
-  deleteState(index) {
-    var states = this.state.states;
-    states.splice(index, 1);
-    this.setState({ states: states })
-  }
 
   populatetext(index) {
     var bill_name = this.state.states[index].bill_name;
@@ -83,7 +78,6 @@ class AdminPage extends React.Component {
             <AdminForm states={this.state.states} addState={this.addState.bind(this)} editState={this.editState.bind(this)} index={this.state.editing_index} />
           </div>
         </div>
-        {/* <CarouselComponent></CarouselComponent> */}
       </div >
     );
   }
