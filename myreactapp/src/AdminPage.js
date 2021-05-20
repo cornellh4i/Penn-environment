@@ -1,10 +1,7 @@
 import React from 'react';
-import Bills from './Bills.js';
-import StatesContainer from './StatesContainer.js'
 import './App.css'
 import './text.css'
 import './textBlocks.css'
-import CarouselComponent from './carousalComponent.js';
 import AdminForm from './AdminForm.js';
 import Header from "./Header";
 import { Link } from "react-router-dom";
@@ -59,6 +56,7 @@ class AdminPage extends React.Component {
     var states = this.state.states;
     states.splice(index, 1);
     this.setState({ states: states })
+    this.populatetext(index)
   }
 
   render() {

@@ -7,6 +7,7 @@ import StatesContainer from './StatesContainer.js'
 require('typeface-open-sans');
 
 class AdminForm extends Component {
+  
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +19,6 @@ class AdminForm extends Component {
       });
   }
 
-  // Form submitting logic, prevent default page refresh  
   handleSubmit(event) {
     event.preventDefault();
     var newStateInfo = {
@@ -34,6 +34,27 @@ class AdminForm extends Component {
       bill_status: ""
     };
 
+    if (this.state.editing_index < 0) {
+      var states = this.state.states;
+      states.push(newStateInfo);
+      this.setState({ states: states });
+    }
+    else{
+        var states = this.state.states;
+        fetch("http://localhost:3001/delete", {
+            method: "post",
+            headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(states[this.state.editing_index])
+        });
+
+        states[this.state.editing_index] = newStateInfo;
+        this.setState({ states: states });
+        this.setState({ editing_index: -1 });
+    }
+
     fetch("http://localhost:3001/insert", {
       method: "post",
       headers: {
@@ -43,9 +64,6 @@ class AdminForm extends Component {
       body: JSON.stringify(newStateInfo)
     });
 
-    this.props.addState(newStateInfo);
-
-    // Clear form after submit
     this.bill_name.value = "";
     this.bill_number.value = "";
     this.bill_summary.value = "";
@@ -54,56 +72,56 @@ class AdminForm extends Component {
     this.sponsor_link.value = "";
   }
 
+  deleteState(index) {
+      var states = this.state.data;
+
+      if(window.confirm("Are you Sure you want to delete this?")){
+        fetch("http://localhost:3001/delete", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(states[index])
+      });
+      states.splice(index, 1);
+      this.setState({ states: states })
+      }
+
+      
+
+  }
 
 
-  async deleteState(index) {
-    var states = this.state.data;
-    console.log(states[index])
-    
-    fetch("http://localhost:3001/delete", {
-      method: "post",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(states[index])
-    });
-    states.splice(index, 1);
-    this.setState({ states: states })
+  populatetext(index) {
+    var bill_name = this.state.data[index].bill_name;
+    document.getElementById("bill_name").value = bill_name;
+    var bill_number = this.state.data[index].bill_number;
+    document.getElementById("bill_number").value = bill_number;
+    var bill_summary = this.state.data[index].bill_summary;
+    document.getElementById("bill_summary").value = bill_summary;
+    var bill_sponsor = this.state.data[index].bill_sponsor
+    document.getElementById("sponsor_name").value = bill_sponsor;
+    this.setState({ editing_index: index });
+    var sponsor_link = this.state.data[index].sponsor_link;
+    document.getElementById("bill_link").value = sponsor_link;
 
+    this.setState({ editing_index: index });
   }
 
   editState(index) {
     var states = this.state.data;
     this.setState({ states: states })
-  }
-  // Method causes to store all the values of the  
-  // input field in react state single method handle  
-  // input changes of all the input field using ES6  
-  // javascript feature computed property names 
-  handleChange(event) {
-    this.className = "inputError"
-    this.setState({
-      // Computed property names 
-      // keys of the objects are computed dynamically 
-      [event.target.name]: event.target.value
-    })
-
+    this.populatetext(index)
   }
 
-  //if  index > -1, then show update state
-
-
-  // Return a controlled form i.e. values of the  
-  // input field not stored in DOM values are exist  
-  // in react component itself as state 
   render() {
     return (
       <div>
         <View style={styles.billList}>
           <div style={{ width: "25%", height: "100%", paddingLeft: 10 }}>
             <div className="webTextBlock">
-              <h1 className="textHeading">Bill List</h1>
+              <h2 style={{ fontFamily: "Roboto", marginLeft: "10px", fontSize: "24px", marginBottom: "2%"}}>Bill List</h2>
               <StatesContainer states={this.state.data} deleteState={this.deleteState.bind(this)} editState={this.editState.bind(this)} />
             </div>
           </div>
@@ -163,8 +181,10 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <div className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
-            <input type="submit" className="submitButton" value="Update"/>
-      
+            <input type="button" className="submitButton" value="Update"/>
+            </div>
+            <div hidden={this.state.editing_index == -1} className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
+            <input type="submit" className="submitButton" value="Cancel"/>
             </div>
 
           </form >
