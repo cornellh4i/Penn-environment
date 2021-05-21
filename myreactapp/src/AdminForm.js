@@ -18,27 +18,31 @@ class AdminForm extends Component {
   }
 
   handleSubmit(event) {
+    console.log("here")
     event.preventDefault();
     var newStateInfo = {
       bill_number: this.bill_number.value,
       bill_name: this.bill_name.value,
-      bill_intro_date: "",
+      bill_intro_date: this.bill_intro_date.value,
       bill_summary: this.bill_summary.value,
       bill_sponsor: this.sponsor_name.value,
-      sponsor_link: "",
-      sponsor_title: "",
-      sponsor_district: "",
-      bill_cosponsor: "",
-      bill_status: ""
+      bill_pdf: this.bill_pdf.value,
+      sponsor_district: this.sponsor_district.value,
+      sponsor_party: this.sponsor_party.value,
+      bill_updated: this.bill_updated.value,
+      bill_status: this.bill_status.value,
+      bill_memo: this.bill_memo.value,
+      featured: this.featured.value
     };
+    console.log(newStateInfo)
 
     if (this.state.editing_index < 0) {
-      var states = this.state.states;
+      var states = this.state.data;
       states.push(newStateInfo);
-      this.setState({ states: states });
+      this.setState({ data: states });
     }
     else{
-        var states = this.state.states;
+        var states = this.state.data;
         fetch("http://localhost:3001/delete", {
             method: "post",
             headers: {
@@ -49,8 +53,7 @@ class AdminForm extends Component {
         });
 
         states[this.state.editing_index] = newStateInfo;
-        this.setState({ states: states });
-        this.setState({ editing_index: -1 });
+        this.setState({ data: states });
     }
 
     fetch("http://localhost:3001/insert", {
@@ -62,12 +65,19 @@ class AdminForm extends Component {
       body: JSON.stringify(newStateInfo)
     });
 
-    this.bill_name.value = "";
-    this.bill_number.value = "";
-    this.bill_summary.value = "";
-    this.bill_link.value = "";
-    this.sponsor_name.value = "";
-    this.sponsor_link.value = "";
+    this.bill_number.value= "";
+    this.bill_name.value= "";
+    this.bill_intro_date.value= "";
+    this.bill_summary.value= "";
+    this.sponsor_name.value= "";
+    this.bill_pdf.value= "";
+    this.sponsor_district.value= "";
+    this.sponsor_party.value= "";
+    this.bill_updated.value= "";
+    this.bill_status.value= "";
+    this.bill_memo.value= "";
+    this.featured.value= "";
+
   }
 
   deleteState(index) {
@@ -146,18 +156,26 @@ class AdminForm extends Component {
               ref={el => this.bill_number = el}
               style={{ width: "75%", paddingLeft: "5px" }}
             />
+             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Introduction Date</p>
+            <input
+              type="date"
+              className="input"
+              id='bill_intro_date'
+              ref={el => this.bill_intro_date = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Summary</p>
             <input ref={el => this.bill_summary = el} id='bill_summary' placeholder="Insert summary here" style={{
               paddingLeft: "5px", paddingTop: "5px", width: "74%", fontFamily: "Arial", fontSize: "16px", height: "110px",
               fontWeight: "normal", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.08)", borderRadius: "4px", border: "1px solid #CCCCCC"
             }}></input>
-            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>PA Legislator Link</p>
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill PDF Link</p>
             <input
               type="text"
               className="input"
-              id='bill_link'
+              id='bill_pdf'
               placeholder='Insert link here'
-              ref={el => this.bill_link = el}
+              ref={el => this.bill_pdf = el}
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Sponsor</p>
@@ -169,17 +187,58 @@ class AdminForm extends Component {
               ref={el => this.sponsor_name = el}
               style={{ width: "75%", paddingLeft: "5px" }}
             />
-            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Co-Sponsor(s)</p>
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Sponsor District</p>
             <input
               type="text"
               className="input"
-              // id='sponsor_link'
-              placeholder='Insert co-sponsor name list separated by commas'
-              ref={el => this.sponsor_link = el}
+              id='sponsor_district'
+              placeholder='Insert district number'
+              ref={el => this.sponsor_district = el}
               style={{ width: "75%", paddingLeft: "5px" }}
             />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Sponsor Party</p>
+            <input
+              type="text"
+              className="input"
+              id='sponsor_party'
+              placeholder='Insert party name'
+              ref={el => this.sponsor_party = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Updated Date</p>
+            <input
+              type="date"
+              className="input"
+              id='bill_updated'
+              ref={el => this.bill_updated = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Status</p>
+            <input
+              type="text"
+              className="input"
+              id='bill_status'
+              placeholder='Insert status here'
+              ref={el => this.bill_status = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Memo</p>
+            <input
+              type="text"
+              className="input"
+              id='bill_memo'
+              placeholder='Insert memo here'
+              ref={el => this.bill_memo = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Featured?</p>
+            <select name="cars" id="featured"  ref={el => this.featured = el}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+
             <div className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
-            <input type="button" className="submitButton" value="Update"/>
+            <input type="submit" className="submitButton" value="Update"/>
             </div>
             <div hidden={this.state.editing_index == -1} className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
             <input type="submit" className="submitButton" value="Cancel"/>
