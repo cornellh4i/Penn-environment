@@ -42,7 +42,7 @@ class AdminForm extends Component {
       this.setState({ data: states });
     }
     else{
-        var states = this.state.data;
+        states = this.state.data;
         fetch("http://localhost:3001/delete", {
             method: "post",
             headers: {
@@ -240,7 +240,7 @@ class AdminForm extends Component {
             <div className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
             <input type="submit" className="submitButton" value="Update"/>
             </div>
-            <div hidden={this.state.editing_index == -1} className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
+            <div hidden={this.state.editing_index === -1} className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
             <input type="submit" className="submitButton" value="Cancel"/>
             </div>
 

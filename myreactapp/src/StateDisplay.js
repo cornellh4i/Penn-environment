@@ -3,9 +3,6 @@ import './style.css'
 
 
 class StateDisplay extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

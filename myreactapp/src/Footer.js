@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Linking } from "react-native";
-import { Link } from "react-router-dom";
 import Logo from "./fblogo.jpg";
 import Logo2 from "./twitterlogo.jpg";
 require('typeface-merriweather');
@@ -22,8 +21,8 @@ class Footer extends Component {
         <input type="submit" className="scoreCardButton" value="Penn Environment" onClick={() => Linking.openURL("https://pennenvironment.org/")}/>
 
         <div className = "appLogos">
-          <img src= {Logo} style= {{marginRight: "5%"}}/>
-          <img src= {Logo2}/>
+          <img  alt = "" src= {Logo} style= {{marginRight: "5%"}}/>
+          <img alt = "" src= {Logo2}/>
         </div>
       </div>
       </div>

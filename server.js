@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
 app.post('/insert', function(req,res){
   console.log(req.body)
   var myData = new entry(req.body);
-  MongoClient.connect(dbConfig.url, function(err, db) {
+  MongoClient.connect(dbConfig.url, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     var dbo = db.db("pennWebsiteInfo");
     dbo.collection("pennWebsiteInfo").insertOne(myData, function(err, res) {
@@ -61,8 +61,7 @@ app.post('/insert', function(req,res){
 // --------------------------------------------------------------------------------------------
 app.get('/showall', function(req,res){
 
-  MongoClient.connect(dbConfig.url, function(err, db) {
-    	useNewUrlParser: true
+  MongoClient.connect(dbConfig.url, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     var dbo = db.db("pennWebsiteInfo");
     dbo.collection("pennWebsiteInfo").find({}).toArray(function(err, result) {
@@ -76,8 +75,8 @@ app.get('/showall', function(req,res){
 
 //--------------------------------------------------------------------------------------------
 app.post('/delete', function(req,res){
-  MongoClient.connect(dbConfig.url, function(err, db) {
-  if (err) throw err;
+  MongoClient.connect(dbConfig.url, { useNewUrlParser: true }, function(err, db) {
+    if (err) throw err;
   var dbo = db.db("pennWebsiteInfo");
   var myquery = { bill_name: req.body.bill_name  };
 

@@ -9,13 +9,6 @@ require('typeface-open-sans');
 require('typeface-roboto');
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  handlePress() {
-
-  }
-
 
   render() {
     var example_link_name = 'ENVIORNMENTAL RESOURCES AND ENERGY'

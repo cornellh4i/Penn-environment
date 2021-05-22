@@ -16,7 +16,7 @@ class Header extends Component {
         borderColor: "#000000", marginBottom: "1%", background: "rgba(236, 243, 216, 0.8)",
         blend: "Pass through"
       }}>
-        <img src={Logo} style={{ width: '10%', marginRight: "1%", marginLeft: ".7%",
+        <img alt = "" src={Logo} style={{ width: '10%', marginRight: "1%", marginLeft: ".7%",
         marginBottom: ".7%", marginTop: ".7%" }} />
         <div style={{ height: "60px", marginTop: "3.8%"}}>
           <h1 style={{
@@ -53,7 +53,7 @@ class Header extends Component {
         </div>
 
         < div style={{ marginLeft: "1%", paddingTop: "5%", height: "10%" }}>
-          <Link to={{ pathname: "/AdminPage" }}>
+          <Link to={{ pathname: "/login" }}>
             <input type="submit" className="submitButton" value="Admin" style={{
               fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
               fontSize: "24px", width: "100%", height: "20%", background: "transparent",
