@@ -38,8 +38,8 @@ class AdminForm extends Component {
 
     if (this.state.editing_index < 0) {
       var states = this.state.data;
-      states.push(newStateInfo);
-      this.setState({ data: states });
+      // states.push(newStateInfo);
+      // this.setState({ data: states });
     }
     else{
         states = this.state.data;
@@ -54,6 +54,9 @@ class AdminForm extends Component {
 
         states[this.state.editing_index] = newStateInfo;
         this.setState({ data: states });
+        document.getElementById("cancel").style.hidden = true;
+        this.state.editing_index = -1;
+
     }
 
     fetch("http://localhost:3001/insert", {
@@ -65,19 +68,7 @@ class AdminForm extends Component {
       body: JSON.stringify(newStateInfo)
     });
 
-    this.bill_number.value= "";
-    this.bill_name.value= "";
-    this.bill_intro_date.value= "";
-    this.bill_summary.value= "";
-    this.sponsor_name.value= "";
-    this.bill_pdf.value= "";
-    this.sponsor_district.value= "";
-    this.sponsor_party.value= "";
-    this.bill_updated.value= "";
-    this.bill_status.value= "";
-    this.bill_memo.value= "";
-    this.featured.value= "";
-
+    this.clearForm();
   }
 
   deleteState(index) {
@@ -95,24 +86,42 @@ class AdminForm extends Component {
       states.splice(index, 1);
       this.setState({ states: states })
       }
-
-      
-
   }
 
 
+  clearForm(){
+    this.bill_number.value= "";
+    this.bill_name.value= "";
+    this.bill_intro_date.value= "";
+    this.bill_summary.value= "";
+    this.sponsor_name.value= "";
+    this.bill_pdf.value= "";
+    this.sponsor_district.value= "";
+    this.sponsor_party.value= "";
+    this.bill_updated.value= "";
+    this.bill_status.value= "";
+    this.bill_memo.value= "";
+    this.featured.value= "";
+  }
+  
+  cancelEdit(){
+    this.clearForm()
+    document.getElementById("cancel").style.hidden = true;
+  }
+
   populatetext(index) {
-    var bill_name = this.state.data[index].bill_name;
-    document.getElementById("bill_name").value = bill_name;
-    var bill_number = this.state.data[index].bill_number;
-    document.getElementById("bill_number").value = bill_number;
-    var bill_summary = this.state.data[index].bill_summary;
-    document.getElementById("bill_summary").value = bill_summary;
-    var bill_sponsor = this.state.data[index].bill_sponsor
-    document.getElementById("sponsor_name").value = bill_sponsor;
-    this.setState({ editing_index: index });
-    var sponsor_link = this.state.data[index].sponsor_link;
-    document.getElementById("bill_link").value = sponsor_link;
+    document.getElementById("bill_number").value = this.state.data[index].bill_number;
+    document.getElementById("bill_name").value = this.state.data[index].bill_name;
+    document.getElementById("bill_intro_date").value = this.state.data[index].bill_intro_date;
+    document.getElementById("bill_summary").value = this.state.data[index].bill_summary;
+    document.getElementById("sponsor_name").value = this.state.data[index]. bill_sponsor;
+    document.getElementById("bill_pdf").value = this.state.data[index].bill_pdf;
+    document.getElementById("sponsor_district").value = this.state.data[index].sponsor_district;
+    document.getElementById("sponsor_party").value = this.state.data[index].sponsor_party;
+    document.getElementById("bill_updated").value = this.state.data[index].bill_updated;
+    document.getElementById("bill_status").value = this.state.data[index].bill_status;
+    document.getElementById("bill_memo").value = this.state.data[index].bill_memo;
+    document.getElementById("featured").value = this.state.data[index].featured;
 
     this.setState({ editing_index: index });
   }
@@ -140,7 +149,7 @@ class AdminForm extends Component {
           <h2 style={{ fontFamily: "Roboto", marginLeft: "10%", fontSize: "24px", marginBottom: "0%", marginTop: "2%" }}>Add a Bill</h2>
           <form onSubmit={this.handleSubmit} style={{ marginLeft: "10%" }}>
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Name </p>
-            <input
+            <input required 
               type="text"
               className="input"
               id='bill_name'
@@ -148,7 +157,7 @@ class AdminForm extends Component {
               ref={el => this.bill_name = el}
               style={{ width: "75%", paddingLeft: "5px" }} />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Number</p>
-            <input
+            <input required
               type="text"
               className="input"
               id='bill_number'
@@ -157,7 +166,7 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
              <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Introduction Date</p>
-            <input
+            <input required
               type="date"
               className="input"
               id='bill_intro_date'
@@ -165,12 +174,12 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Summary</p>
-            <input ref={el => this.bill_summary = el} id='bill_summary' placeholder="Insert summary here" style={{
+            <input required ref={el => this.bill_summary = el} id='bill_summary' placeholder="Insert summary here" style={{
               paddingLeft: "5px", paddingTop: "5px", width: "74%", fontFamily: "Arial", fontSize: "16px", height: "110px",
               fontWeight: "normal", boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.08)", borderRadius: "4px", border: "1px solid #CCCCCC"
             }}></input>
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill PDF Link</p>
-            <input
+            <input required
               type="text"
               className="input"
               id='bill_pdf'
@@ -179,7 +188,7 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Sponsor</p>
-            <input
+            <input required
               type="text"
               className="input"
               id='sponsor_name'
@@ -188,7 +197,7 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Sponsor District</p>
-            <input
+            <input required
               type="text"
               className="input"
               id='sponsor_district'
@@ -197,7 +206,7 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Sponsor Party</p>
-            <input
+            <input required
               type="text"
               className="input"
               id='sponsor_party'
@@ -206,7 +215,7 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
              <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Updated Date</p>
-            <input
+            <input required
               type="date"
               className="input"
               id='bill_updated'
@@ -214,7 +223,7 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Status</p>
-            <input
+            <input required
               type="text"
               className="input"
               id='bill_status'
@@ -223,7 +232,7 @@ class AdminForm extends Component {
               style={{ width: "75%", paddingLeft: "5px" }}
             />
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Memo</p>
-            <input
+            <input required
               type="text"
               className="input"
               id='bill_memo'
@@ -238,10 +247,10 @@ class AdminForm extends Component {
             </select>
 
             <div className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
-            <input type="submit" className="submitButton" value="Update"/>
+            <input required type="submit" className="submitButton" value="Update"/>
             </div>
             <div hidden={this.state.editing_index === -1} className="UpdateButton" style={{ width: "15%", paddingLeft: "60%" }}>
-            <input type="submit" className="submitButton" value="Cancel"/>
+            <button id = "cancel" className="submitButton" onClick = {() => this.cancelEdit}>Cancel </button>
             </div>
 
           </form >

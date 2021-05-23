@@ -1,31 +1,16 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import './Login.css';
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import { Component } from 'react';
 
-async function loginUser(credentials) {
- return fetch('http://localhost:8080/login', {
-   method: 'POST',
-   headers: {
-     'Content-Type': 'application/json'
-   },
-   body: JSON.stringify(credentials)
- })
-   .then(data => data.json())
-}
-// const [username, setUserName] = useState();
-// const [password, setPassword] = useState();
 
 class Login extends Component {
-
 
   handleSubmit = async e => {
     e.preventDefault();
     const token = {username: "admin", password: "password"}
-    // console.log(username, password);
-    if(this.password.value == token.password && this.username.value == token.username)
+    if(this.password.value === token.password && this.username.value === token.username)
       this.props.history.push('/AdminPage');
     else alert("Incorrect Login Info")
   }
@@ -58,10 +43,6 @@ class Login extends Component {
     </div>
   )
 }}
-
-Login.propTypes = {
-  // setToken: PropTypes.func.isRequired
-};
 
 export default Login;
 

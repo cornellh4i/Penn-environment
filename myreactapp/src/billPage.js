@@ -106,7 +106,7 @@ class App extends Component {
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Memo: <br></br></Text>
-            <Text style={styles.tabInfo}>{this.props.location.state.data.memo}</Text>
+            <Text style={styles.tabInfo}>{this.props.location.state.data.bill_memo}</Text>
           </View>
         </View>
       </View>
@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
   },
   billTabArea: {
     paddingLeft: 55,
-    marginLeft: "50px"
+    marginLeft: "50px",
+    width: "50%"
   },
   tabButtons: {
     font: 'Open Sans',
@@ -190,7 +191,6 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 10,
     width: 500,
-    height: 651
   },
   subTitles: {
     paddingVertical: 20,

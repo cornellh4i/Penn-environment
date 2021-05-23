@@ -172,7 +172,7 @@
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 12px;
     text-align: center;
     color: #FFFFFF;
     z-index: 9;
@@ -187,6 +187,8 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 10px
   }
   
   #wrapper:hover .text {

@@ -21,16 +21,18 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url,{ useNewUrlParser: true });
 var nameSchema = new mongoose.Schema({
-    bill_number: String,
-    bill_name: String,
-    bill_intro_date: String,
-    bill_summary: String,
-    bill_sponsor: String,
-    sponsor_link: String,
-    sponsor_title: String,
-    sponsor_district: String,
-    bill_cosponsor: String,
-    bill_status: String
+      bill_number: String,
+      bill_name: String,
+      bill_intro_date: String,
+      bill_summary: String,
+      bill_sponsor: String,
+      bill_pdf: String,
+      sponsor_district: String,
+      sponsor_party: String,
+      bill_updated: String,
+      bill_status: String,
+      bill_memo: String,
+      featured: Boolean
 });
 var entry = mongoose.model("entry", nameSchema);
 
@@ -51,6 +53,7 @@ app.post('/insert', function(req,res){
     if (err) throw err;
     var dbo = db.db("pennWebsiteInfo");
     dbo.collection("pennWebsiteInfo").insertOne(myData, function(err, res) {
+      console.log(myData);
       if (err) throw err;
       console.log("1 document inserted");
       db.close();
