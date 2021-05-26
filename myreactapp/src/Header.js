@@ -16,8 +16,10 @@ class Header extends Component {
         borderColor: "#000000", marginBottom: "1%", background: "rgba(236, 243, 216, 0.8)",
         blend: "Pass through"
       }}>
-        <img alt = "" src={Logo} style={{ width: '10%', marginRight: "1%", marginLeft: ".7%",
+        <Link to="/">
+        <img alt = "" src={Logo} style={{ width: '100%', marginRight: "2%", marginLeft: ".7%",
         marginBottom: ".7%", marginTop: ".7%" }} />
+        </Link>
         <div style={{ height: "60px", marginTop: "3.8%"}}>
           <h1 style={{
             width: '30%', top: "0%",
@@ -25,7 +27,7 @@ class Header extends Component {
             fontStyle: "normal", fontWeight: "bold",
             fontSize: "48px", lineHeight: "60px",
             color: "#C1D82E", display: "inline", position: "relative"
-          }}>Eco</h1>
+          }}> Eco</h1>
 
           <h1 style={{
             width: '30%', top: "0%",
@@ -48,7 +50,7 @@ class Header extends Component {
             style={{
               fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
               fontSize: "24px", width: "100%", background: "transparent",
-              color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
+              color: "black", borderWidth: "0px", padding: "10px", marginLeft: "0px"
             }} />
         </div>
 
@@ -57,7 +59,7 @@ class Header extends Component {
             <input type="submit" className="submitButton" value="Admin" style={{
               fontFamily: "Open Sans", fontWeight: "normal", cursor: "pointer",
               fontSize: "24px", width: "100%", height: "20%", background: "transparent",
-              color: "black", borderWidth: "0px", padding: "0px", marginLeft: "0px"
+              color: "black", borderWidth: "0px", padding: "10px", marginLeft: "0px"
             }} />  </Link>
         </div>
       </div>

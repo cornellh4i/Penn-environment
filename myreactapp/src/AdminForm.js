@@ -32,7 +32,12 @@ class AdminForm extends Component {
       bill_updated: this.bill_updated.value,
       bill_status: this.bill_status.value,
       bill_memo: this.bill_memo.value,
-      featured: this.featured.value
+      featured: this.featured.value,
+      cosponsors: this.cosponsors.value.split(','),
+      bill_links: this.bill_links.value.split(','),
+      bill_articles: this.bill_articles.value.split(','),
+      bill_petitions: this.bill_petitions.value.split(',')
+      
     };
     console.log(newStateInfo)
 
@@ -69,6 +74,8 @@ class AdminForm extends Component {
     });
 
     this.clearForm();
+    // this.props.history.push('/AdminPage');
+
   }
 
   deleteState(index) {
@@ -102,6 +109,10 @@ class AdminForm extends Component {
     this.bill_status.value= "";
     this.bill_memo.value= "";
     this.featured.value= "";
+    this.cosponsors.value = "";
+    this.bill_links.value = "";
+    this.bill_articles.value = "";
+    this.bill_petitions.value = "";
   }
   
   cancelEdit(){
@@ -121,6 +132,10 @@ class AdminForm extends Component {
     document.getElementById("bill_updated").value = this.state.data[index].bill_updated;
     document.getElementById("bill_status").value = this.state.data[index].bill_status;
     document.getElementById("bill_memo").value = this.state.data[index].bill_memo;
+    document.getElementById("cosponsors").value = this.state.data[index].cosponsors;
+    document.getElementById("bill_links").value = this.state.data[index].bill_links;
+    document.getElementById("bill_articles").value = this.state.data[index].bill_articles;
+    document.getElementById("bill_petitions").value = this.state.data[index].bill_petitions;
     document.getElementById("featured").value = this.state.data[index].featured;
 
     this.setState({ editing_index: index });
@@ -240,6 +255,43 @@ class AdminForm extends Component {
               ref={el => this.bill_memo = el}
               style={{ width: "75%", paddingLeft: "5px" }}
             />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Co Sponsors (separated by commas)</p>
+            <input required
+              type="text"
+              className="input"
+              id='cosponsors'
+              placeholder='Insert cosponsors separated by commas'
+              ref={el => this.cosponsors = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Links (separated by commas)</p>
+            <input required
+              type="text"
+              className="input"
+              id='bill_links'
+              placeholder='Insert links here, separated by commas; exp: www.google.com, www.netflix.com'
+              ref={el => this.bill_links = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Articles (separated by commas)</p>
+            <input required
+              type="text"
+              className="input"
+              id='bill_articles'
+              placeholder='Insert articles here, separated by commas; exp: www.google.com, www.netflix.com'
+              ref={el => this.bill_articles = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+            <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Bill Petitions (separated by commas)</p>
+            <input required
+              type="text"
+              className="input"
+              id='bill_petitions'
+              placeholder='Insert Petitions here, separated by commas; exp: www.google.com, www.netflix.com'
+              ref={el => this.bill_petitions = el}
+              style={{ width: "75%", paddingLeft: "5px" }}
+            />
+            
             <p className="textLabel" style={{ fontFamily: "Open Sans", fontWeight: "normal", marginBottom: "2px" }}>Featured?</p>
             <select name="cars" id="featured"  ref={el => this.featured = el}>
               <option value="true">Yes</option>

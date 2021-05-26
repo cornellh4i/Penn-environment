@@ -32,6 +32,10 @@ var nameSchema = new mongoose.Schema({
       bill_updated: String,
       bill_status: String,
       bill_memo: String,
+      cosponsors: Array ,
+      bill_links: Array,
+      bill_articles: Array,
+      bill_petitions: Array,
       featured: Boolean
 });
 var entry = mongoose.model("entry", nameSchema);

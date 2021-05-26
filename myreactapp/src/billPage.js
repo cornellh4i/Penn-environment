@@ -12,14 +12,13 @@ class App extends Component {
 
   render() {
     var example_link_name = 'ENVIORNMENTAL RESOURCES AND ENERGY'
-    var dummy_tag = 'dummy article link'
-    var dummy_tag2 = 'dummy article link 2'
-    var dummy_tag3 = 'dummy article link 3'
-    var dummy_petition1 = 'dummy petition link 1'
-    var dummy_petition2 = 'dummy petition link 2'
-    console.log(this.props.location.state.data.bill_pdf)
-    var dummy_url = 'https://www.legis.state.pa.us/cfdocs/cteeInfo/Index.cfm?Code=9&CteeBody=S'
-    var dummy_full_text = 'https://www.legis.state.pa.us/CFDOCS/Legis/PN/Public/btCheck.cfm?txtType=PDF&sessYr=2021&sessInd=0&billBody=S&billTyp=B&billNbr=0408&pn=0401'
+
+    var cosponsors = this.props.location.state.data.cosponsors
+    var links = this.props.location.state.data.bill_links
+    var articles = this.props.location.state.data.bill_articles
+    var petitions = this.props.location.state.data.bill_petitions
+
+
     return (
       <View>
         <div className="App" style={{ width: "100%", left: "0%" }}>
@@ -37,7 +36,7 @@ class App extends Component {
               title="Download PDF"
               color="#334581"
               marginLeft={50}
-              onPress={() => Linking.openURL(this.props.location.state.data.bill_pdf)}
+              onPress={() => Linking.openURL("https://" + this.props.location.state.data.bill_pdf)}
             />
 
           </View>
@@ -50,36 +49,29 @@ class App extends Component {
 
         <View style={styles.articles}>
           <Text style={styles.subTitles}>Key Resources</Text>
-          <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_url)}>
-            {example_link_name}
-          </Text>
-          <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_url)}>
-            {dummy_tag}
-          </Text>
+              {links.map(function(object, i){
+                  return <Text style={styles.articleLinks}
+                  onPress={() => Linking.openURL("https://" + object)}>
+                  Link {i +1}
+                </Text>
+              })}
+           
           <Text style={styles.subTitles}>Other Articles for this Bill</Text>
-          <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_url)}>
-            {dummy_tag}
-          </Text>
-          <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_url)}>
-            {dummy_tag2}
-          </Text>
-          <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_url)}>
-            {dummy_tag3}
-          </Text>
+          {articles.map(function(object, i){
+                            return <Text style={styles.articleLinks}
+                            onPress={() => Linking.openURL("https://" + object)}>
+                            Article {i +1}
+                          </Text>
+                        })}
           <Text style={styles.subTitles}>Related PennEnvironment Petitions</Text>
-          <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_url)}>
-            {dummy_petition1}
-          </Text>
-          <Text style={styles.articleLinks}
-            onPress={() => Linking.openURL(dummy_full_text)}>
-            {dummy_petition2}
-          </Text>
+                    {petitions.map(function(object, i){
+                      console.log(object)
+                            return <Text style={styles.articleLinks}
+                            onPress={() => Linking.openURL("https://" + object)}>
+                            Petition {i +1}
+                          </Text>
+                        })}
+    
         </View>
 
         <View style={styles.billTabArea}>
@@ -94,6 +86,10 @@ class App extends Component {
           </View>
           <View style={styles.row}>
             <Text style={styles.tabHeaders}>Co-Sponsor: </Text>
+          
+                      {cosponsors.map(function(object, i){
+                            return <Text style={styles.tabInfo}>{object}</Text>
+                        })}
             <Text style={styles.tabInfo}>{this.props.location.state.data.bill_cosponsor}</Text>
           </View>
           <View style={styles.row}>

@@ -21,8 +21,12 @@ class Footer extends Component {
         <input type="submit" className="scoreCardButton" value="Penn Environment" onClick={() => Linking.openURL("https://pennenvironment.org/")}/>
 
         <div className = "appLogos">
+        <a target="_blank" href="https://www.facebook.com/PennEnvironment">
           <img  alt = "" src= {Logo} style= {{marginRight: "5%"}}/>
+          </a>
+          <a target="_blank" href="https://twitter.com/pennenvironment">
           <img alt = "" src= {Logo2}/>
+          </a>
         </div>
       </div>
       </div>
