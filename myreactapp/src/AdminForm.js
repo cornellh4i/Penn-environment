@@ -3,7 +3,7 @@ import './style.css';
 import { View, StyleSheet } from 'react-native';
 import StatesContainer from './StatesContainer.js';
 require('typeface-open-sans');
-const API_URL = process.env.REACT_APP_API || 'http://localhost:3001';
+const API_URL = 'https://penn-environment.herokuapp.com';
 
 class AdminForm extends Component {
   constructor(props) {

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const dotenv = require('dotenv');
 dotenv.config();
-const API_URL = process.env.REACT_APP_API || 'http://localhost:3001';
+const API_URL = 'https://penn-environment.herokuapp.com';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
