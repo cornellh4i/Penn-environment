@@ -8,7 +8,9 @@
     "server": "node server.js",
     "app": "cd myreactapp && npm start",
     "start": "concurrently \"npm run app\" \"npm run server\"",
-    "install": "cd myreactapp && npm install"
+    "build": "cd myreactapp && npm run build",
+    "installAll": "concurrently \"npm install\" \" cd myreactapp && npm install\"",
+    "heroku-postbuild": "npm run installAll && cd myreactapp && npm run build"
   },
   "author": "",
   "license": "ISC",
