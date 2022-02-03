@@ -1,0 +1,53 @@
+{
+  "name": "react-admin-app",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.5",
+    "mongodb-client-encryption": "^1.2.2",
+    "mongoose": "^5.12.3",
+    "prop-types": "^15.7.2",
+    "ra-data-json-server": "^2.9.5",
+    "react": "^16.8.6",
+    "react-admin": "^2.9.5",
+    "react-art": "^17.0.2",
+    "react-dom": "^16.8.6",
+    "react-elastic-carousel": "^0.11.5",
+    "react-native": "^0.64.0",
+    "react-native-cli": "^2.0.1",
+    "react-native-hyperlink": "0.0.19",
+    "react-native-web": "^0.15.7",
+    "react-router-dom": "^5.2.0",
+    "react-router-native": "^5.2.0",
+    "react-scripts": "3.0.1",
+    "styled-components": "^5.2.3",
+    "typeface-merriweather": "^1.1.13",
+    "typeface-open-sans": "^1.1.13",
+    "typeface-roboto": "^1.1.13"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "keywords": [],
+  "description": ""
+}
