@@ -1,5 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const path = require('path');
+
 dotenv.config();
 
 const bodyParser = require('body-parser');
@@ -16,6 +18,10 @@ app.use(bodyParser.json());
 var MongoClient = require('mongodb').MongoClient;
 
 const dbConfig = process.env.URL;
+
+const port = process.env.PORT || 3001;
+
+app.use(express.static(path.resolve('myreactapp', 'build')));
 
 // --------------------------------------------------------------------------------------------
 
@@ -107,6 +113,10 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(3001, () => {
-  console.log('Server is listening on port 3001');
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
+
+app.get('*', (req, res) =>
+  res.sendFile(path.resolve('myreactapp', 'build', 'index.html'))
+);

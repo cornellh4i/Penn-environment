@@ -4,6 +4,10 @@ import Item from './Item';
 import './style.css';
 import { Link } from 'react-router-dom';
 
+const dotenv = require('dotenv');
+dotenv.config();
+const API_URL = process.env.REACT_APP_API || 'http://localhost:3001';
+
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
   { width: 550, itemsToShow: 2 },
@@ -14,9 +18,10 @@ const breakPoints = [
 class CarouselComponent extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.featured);
+
+    console.log(API_URL);
     this.state = { data: [] };
-    fetch('/showall')
+    fetch(`${API_URL}/showall`)
       .then((data) => data.json())
       .then((data) => {
         this.setState({ data: data });

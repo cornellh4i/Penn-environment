@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dotenv": "^16.0.0",
     "ra-data-json-server": "^2.9.5",
     "react": "^16.8.6",
     "react-admin": "^2.9.5",

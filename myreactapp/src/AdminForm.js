@@ -3,13 +3,14 @@ import './style.css';
 import { View, StyleSheet } from 'react-native';
 import StatesContainer from './StatesContainer.js';
 require('typeface-open-sans');
+const API_URL = process.env.REACT_APP_API || 'http://localhost:3001';
 
 class AdminForm extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { data: [], editing_index: -1 };
-    fetch('/showall')
+    fetch(`${API_URL}/showall`)
       .then((data) => data.json())
       .then((data) => {
         this.setState({ data: data });
@@ -45,7 +46,7 @@ class AdminForm extends Component {
       // this.setState({ data: states });
     } else {
       states = this.state.data;
-      fetch('/delete', {
+      fetch(`${API_URL}/delete`, {
         method: 'post',
         headers: {
           Accept: 'application/json',
@@ -60,7 +61,7 @@ class AdminForm extends Component {
       this.state.editing_index = -1;
     }
 
-    fetch('/insert', {
+    fetch(`${API_URL}/insert`, {
       method: 'post',
       headers: {
         Accept: 'application/json',
@@ -77,7 +78,7 @@ class AdminForm extends Component {
     var states = this.state.data;
 
     if (window.confirm('Are you Sure you want to delete this?')) {
-      fetch('/delete', {
+      fetch(`${API_URL}/delete`, {
         method: 'post',
         headers: {
           Accept: 'application/json',
