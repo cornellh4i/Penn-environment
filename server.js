@@ -21,7 +21,7 @@ const dbConfig = process.env.URL;
 
 const port = process.env.PORT || 3001;
 
-app.use(express.static(path.resolve('myreactapp', 'build')));
+app.use(express.static(path.resolve('client', 'build')));
 
 // --------------------------------------------------------------------------------------------
 
@@ -118,5 +118,5 @@ app.listen(port, () => {
 });
 
 app.get('*', (req, res) =>
-  res.sendFile(path.resolve('myreactapp', 'build', 'index.html'))
+  res.sendFile(path.resolve('client', 'build', 'index.html'))
 );

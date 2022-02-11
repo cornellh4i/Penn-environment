@@ -16,7 +16,7 @@ In order to build the application, you need to have the heroku CLI installed.
 Type in these commands into the root folder:
 
 1. heroku login (you will be prompted to login on the browser)
-2. npm build (this will create the build folders)
+2. npm run build (this will create the build folders)
 3. git add . (add all the files for commit)
 4. git commit -m "add in commit message"
-5. git push heroku master (this will build the site to github)
+5. git push heroku master (this will build the site to heroku)
