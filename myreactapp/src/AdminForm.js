@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import StatesContainer from './StatesContainer.js';
 require('typeface-open-sans');
 const API_URL = 'https://penn-environment.herokuapp.com';
+// const API_URL = 'http://localhost:3001';
 
 class AdminForm extends Component {
   constructor(props) {
