@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import './style.css';
+import '../css/style.css';
 import { View, StyleSheet } from 'react-native';
 import StatesContainer from './StatesContainer.js';
 require('typeface-open-sans');
-const API_URL = 'https://penn-environment.herokuapp.com';
-// const API_URL = 'http://localhost:3001';
+
+//make sure the endpoint reflects whether app is hosted or no
+var API_URL = '';
+if (process.env.PORT) {
+  API_URL = 'https://ecobilltracker.herokuapp.com';
+} else {
+  API_URL = 'http://localhost:3001';
+}
 
 class AdminForm extends Component {
   constructor(props) {
@@ -18,8 +24,8 @@ class AdminForm extends Component {
       });
   }
 
+  //handle submission of form for new bill
   handleSubmit(event) {
-    console.log('here');
     event.preventDefault();
     var newStateInfo = {
       bill_number: this.bill_number.value,
@@ -39,12 +45,10 @@ class AdminForm extends Component {
       bill_articles: this.bill_articles.value.split(','),
       bill_petitions: this.bill_petitions.value.split(','),
     };
-    console.log(newStateInfo);
 
+    //check whether we need to edit or delete a bill
     if (this.state.editing_index < 0) {
       var states = this.state.data;
-      // states.push(newStateInfo);
-      // this.setState({ data: states });
     } else {
       states = this.state.data;
       fetch(`${API_URL}/delete`, {
@@ -72,12 +76,10 @@ class AdminForm extends Component {
     });
 
     this.clearForm();
-    // this.props.history.push('/AdminPage');
   }
 
   deleteState(index) {
     var states = this.state.data;
-
     if (window.confirm('Are you Sure you want to delete this?')) {
       fetch(`${API_URL}/delete`, {
         method: 'post',
@@ -159,6 +161,7 @@ class AdminForm extends Component {
 
   render() {
     return (
+      //form to add a new bill
       <div>
         <View style={styles.billList}>
           <div style={{ width: '25%', height: '100%', paddingLeft: 10 }}>
@@ -181,7 +184,6 @@ class AdminForm extends Component {
             </div>
           </div>
         </View>
-
         <div
           className='AdminForm'
           style={{ width: '100%', paddingBottom: '1%' }}

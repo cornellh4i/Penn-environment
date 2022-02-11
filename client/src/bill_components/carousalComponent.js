@@ -1,13 +1,16 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel';
 import Item from './Item';
-import './style.css';
+import '../css/style.css';
 import { Link } from 'react-router-dom';
 
-const dotenv = require('dotenv');
-dotenv.config();
-const API_URL = 'https://penn-environment.herokuapp.com';
-// const API_URL = 'http://localhost:3001';
+//make sure the endpoint reflects whether app is hosted or no
+var API_URL = '';
+if (process.env.PORT) {
+  API_URL = 'https://ecobilltracker.herokuapp.com';
+} else {
+  API_URL = 'http://localhost:3001';
+}
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -16,12 +19,13 @@ const breakPoints = [
   { width: 1200, itemsToShow: 4 },
 ];
 
+//takes care of the carousel component of bills
 class CarouselComponent extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log(API_URL);
     this.state = { data: [] };
+
+    //fetch data from mongodb
     fetch(`${API_URL}/showall`)
       .then((data) => data.json())
       .then((data) => {
@@ -34,7 +38,7 @@ class CarouselComponent extends React.Component {
       <div className='App'>
         <Carousel breakPoints={breakPoints} style={{ marginBottom: '3%' }}>
           {this.state.data.map((stateInfo, index) => {
-            console.log(stateInfo.featured);
+            //if the bill is featured, add it to the top carousel
             if (this.props.featured && stateInfo.featured) {
               return (
                 <Item key={index}>
@@ -77,7 +81,9 @@ class CarouselComponent extends React.Component {
                   </Link>
                 </Item>
               );
-            } else if (!this.props.featured) {
+            }
+            //if bill is not featured, add all the bills on bottom carousel
+            else if (!this.props.featured) {
               return (
                 <Item key={index}>
                   <Link

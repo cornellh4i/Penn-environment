@@ -1,6 +1,6 @@
 import React from 'react';
 import CarouselComponent from './carousalComponent';
-import './style.css';
+import '../css/style.css';
 
 function Bills() {
   return (

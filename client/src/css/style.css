@@ -8,7 +8,7 @@
   pointer-events: none;
 }
 .background {
-  background-image: url('background.png');
+  background-image: url('../img/background.png');
   height: 50%;
 }
 
@@ -153,7 +153,7 @@
 }
 
 .bill:hover {
-  background-image: url('hovernature.png');
+  background-image: url('../img/hovernature.png');
 }
 
 #wrapper .text {
@@ -188,7 +188,7 @@
 
 #wrapper:hover .text {
   visibility: visible;
-  background-image: url('hovernature.png');
+  background-image: url('../img/hovernature.png');
   border-top-left-radius: 0px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -203,7 +203,7 @@
 
 .billImg {
   width: 90px;
-  background-image: url('nature.png'), linear-gradient(red, yellow);
+  background-image: url('../img/nature.png'), linear-gradient(red, yellow);
   background-position: right;
   border-top-left-radius: 0px;
   border-top-right-radius: 10px;

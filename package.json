@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
-    "app": "cd myreactapp && npm start",
+    "app": "cd client && npm start",
     "start": "concurrently \"npm run app\" \"npm run server\"",
-    "build": "cd myreactapp && npm run build",
-    "installAll": "concurrently \"npm install\" \" cd myreactapp && npm install\"",
-    "heroku-postbuild": "npm run installAll && cd myreactapp && npm run build"
+    "build": "cd client && npm run build",
+    "installAll": "concurrently \"npm install\" \" cd client && npm install\"",
+    "heroku-postbuild": "npm run installAll && cd client && npm run build"
   },
   "author": "",
   "license": "ISC",

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Linking } from 'react-native';
 import { Link } from 'react-router-dom';
 
-import Logo from './fblogo.jpg';
-import Logo2 from './twitterlogo.jpg';
-import Logo3 from './insta.png';
+import Logo from '../img/fblogo.jpg';
+import Logo2 from '../img/twitterlogo.jpg';
+import Logo3 from '../img/insta.png';
 
 require('typeface-merriweather');
 require('typeface-open-sans');
