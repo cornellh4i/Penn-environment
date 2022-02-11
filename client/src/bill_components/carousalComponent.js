@@ -5,12 +5,12 @@ import '../css/style.css';
 import { Link } from 'react-router-dom';
 
 //make sure the endpoint reflects whether app is hosted or no
-var API_URL = '';
-if (process.env.PORT) {
-  API_URL = 'https://ecobilltracker.herokuapp.com';
-} else {
-  API_URL = 'http://localhost:3001';
-}
+var API_URL = 'https://ecobilltracker.herokuapp.com';
+// if (process.env.PORT) {
+//   API_URL = 'https://ecobilltracker.herokuapp.com';
+// } else {
+//   API_URL = 'http://localhost:3001';
+// }
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
