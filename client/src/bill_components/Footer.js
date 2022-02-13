@@ -17,7 +17,6 @@ class Footer extends Component {
           display: 'inline-flex',
           width: '100%',
           bottom: '0px',
-          height: '60px',
           background: 'rgba(236, 243, 216, 0.8)',
           blend: 'Pass through',
         }}
