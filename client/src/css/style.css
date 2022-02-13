@@ -1,7 +1,7 @@
 .App {
   font-family: sans-serif;
   text-align: center;
-  height: 50%;
+  height: 30%;
 }
 .App-logo {
   height: 40vmin;
@@ -216,8 +216,8 @@
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
-  line-height: 10px;
+  font-size: 20px;
+  line-height: 0px;
   margin-left: 5%;
   /* identical to box height */
 }
@@ -226,8 +226,8 @@
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
-  line-height: 10px;
+  font-size: 20px;
+  line-height: 0px;
   margin-left: 5%;
 }
 
@@ -332,12 +332,12 @@
 
 .layout {
   display: grid;
-  grid-template-columns: auto auto auto;
   grid-template-rows: auto auto;
-  grid-column-gap: 15%;
+  grid-column-gap: 10%;
   grid-row-gap: 0px;
-  margin-top: 20px;
-  margin-left: 50%;
+  margin-top: 10px;
+  margin-left: 25%;
+  grid-template-columns: repeat(4, 30%);
 }
 
 .text {
@@ -353,9 +353,7 @@
 }
 
 .scoreCardButton {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  text-align: center;
   padding: 10px;
 
   cursor: 'pointer';
@@ -365,14 +363,14 @@
 
   position: static;
   left: 10px;
-  height: 45px;
+  height: 40px;
   /* top: 10px; */
 
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 15px;
+  line-height: 0px;
   text-align: center;
   color: #ffffff;
   flex: none;
@@ -383,7 +381,7 @@
 
 .appLogos {
   display: grid;
-  grid-template-columns: repeat(3, 50%);
+  grid-template-columns: repeat(3, 40%);
 }
 .webTextBlock {
   display: flex;
@@ -437,6 +435,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 95vh;
 }
 
 code {

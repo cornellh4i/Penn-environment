@@ -36,7 +36,7 @@ class CarouselComponent extends React.Component {
   render() {
     return (
       <div className='App'>
-        <Carousel breakPoints={breakPoints} style={{ marginBottom: '3%' }}>
+        <Carousel breakPoints={breakPoints}>
           {this.state.data.map((stateInfo, index) => {
             //if the bill is featured, add it to the top carousel
             if (this.props.featured && stateInfo.featured) {

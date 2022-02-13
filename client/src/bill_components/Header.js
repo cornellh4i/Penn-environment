@@ -29,7 +29,7 @@ class Header extends Component {
             alt=''
             src={Logo}
             style={{
-              width: '60%',
+              width: '30%',
               marginRight: '2%',
               marginLeft: '.7%',
               marginBottom: '0%',
@@ -37,7 +37,7 @@ class Header extends Component {
             }}
           />
         </Link>
-        <div style={{ height: '30px', marginTop: '3%' }}>
+        <div style={{ marginTop: '1%' }}>
           <h1
             style={{
               width: '20%',
@@ -45,7 +45,7 @@ class Header extends Component {
               fontFamily: 'Merriweather',
               fontStyle: 'normal',
               fontWeight: 'bold',
-              fontSize: '40px',
+              fontSize: '30px',
               color: '#C1D82E',
               display: 'inline',
               position: 'relative',
@@ -62,7 +62,7 @@ class Header extends Component {
               fontFamily: 'Merriweather',
               fontStyle: 'normal',
               fontWeight: 'bold',
-              fontSize: '40px',
+              fontSize: '30px',
               color: '#3E4981',
               display: 'inline',
               position: 'relative',
@@ -78,7 +78,7 @@ class Header extends Component {
               fontFamily: 'Merriweather',
               fontStyle: 'normal',
               fontWeight: 'bold',
-              fontSize: '40px',
+              fontSize: '30px',
               color: 'black',
               display: 'inline',
               position: 'relative',
@@ -90,8 +90,7 @@ class Header extends Component {
         </div>
         <div
           style={{
-            height: '10%',
-            marginTop: '3%',
+            marginTop: '1%',
             marginLeft: '40%',
           }}
         >

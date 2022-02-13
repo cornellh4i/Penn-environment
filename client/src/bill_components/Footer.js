@@ -17,36 +17,16 @@ class Footer extends Component {
           display: 'inline-flex',
           width: '100%',
           bottom: '0px',
-          height: '122px',
+          height: '60px',
           background: 'rgba(236, 243, 216, 0.8)',
           blend: 'Pass through',
         }}
       >
         <div className='layout'>
-          <Link to={{ pathname: '/login' }}>
-            <input
-              type='submit'
-              className='submitButton'
-              value='Admin'
-              style={{
-                fontFamily: 'Open Sans',
-                fontWeight: 'normal',
-                cursor: 'pointer',
-                fontSize: '20px',
-                background: 'transparent',
-                color: 'black',
-                borderWidth: '0px',
-                padding: '10px',
-                marginLeft: '0px',
-              }}
-            />{' '}
-          </Link>
-          <h1 className='text'>About Us</h1>
-          <h1 className='text'>Follow Us</h1>
           <input
             type='submit'
             className='scoreCardButton'
-            value='Environmental Scorecard'
+            value='Env. Scorecard'
             onClick={() =>
               Linking.openURL('https://scorecard.conservationpa.org/')
             }
@@ -72,6 +52,24 @@ class Footer extends Component {
               <img alt='Instagram' src={Logo3} />
             </a>
           </div>
+          <Link to={{ pathname: '/login' }}>
+            <input
+              type='submit'
+              className='submitButton'
+              value='Admin'
+              style={{
+                fontFamily: 'Open Sans',
+                fontWeight: 'normal',
+                cursor: 'pointer',
+                fontSize: '20px',
+                background: 'transparent',
+                color: 'black',
+                borderWidth: '0px',
+                padding: '10px',
+                marginLeft: '0px',
+              }}
+            />
+          </Link>
         </div>
       </div>
     );
