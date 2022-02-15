@@ -335,7 +335,7 @@
   grid-template-rows: auto auto;
   grid-column-gap: 10%;
   grid-row-gap: 0px;
-  margin-top: 3%px;
+  margin-top: 3%;
   margin-left: 25%;
   grid-template-columns: repeat(4, 30%);
 }
