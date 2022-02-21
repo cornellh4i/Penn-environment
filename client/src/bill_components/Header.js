@@ -52,7 +52,7 @@ class Header extends Component {
             }}
           >
             {' '}
-            Eco
+            Charu's
           </h1>
 
           <h1
@@ -68,7 +68,7 @@ class Header extends Component {
               position: 'relative',
             }}
           >
-            Bill
+            Very Cool
           </h1>
 
           <h1
@@ -85,7 +85,7 @@ class Header extends Component {
               marginLeft: '5%',
             }}
           >
-            Tracker
+            Bill
           </h1>
         </div>
         <div
